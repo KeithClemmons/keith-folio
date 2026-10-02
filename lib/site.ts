@@ -24,12 +24,12 @@ export const links = {
 } as const;
 
 export const nav = [
-  { href: "#work", label: "Work" },
-  { href: "#gutrx", label: "GutRx" },
-  { href: "#companies", label: "Companies" },
-  { href: "#background", label: "Background" },
-  { href: "#clients", label: "Clients" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#gutrx", label: "GutRx" },
+  { href: "/#companies", label: "Companies" },
+  { href: "/#background", label: "Background" },
+  { href: "/#clients", label: "Clients" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const systems = ["Sites", "SEO", "Email", "Content", "AI agents"] as const;

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function LinkButton({
@@ -15,20 +16,13 @@ export function LinkButton({
   className?: string;
   external?: boolean;
 }) {
-  return (
-    <Button
-      nativeButton={false}
-      variant={variant}
-      className={cn("h-11 px-4 text-[0.95rem]", className)}
-      render={
-        <a
-          href={href}
-          {...(external
-            ? { target: "_blank", rel: "noopener noreferrer" }
-            : {})}
-        />
-      }
-    >
+  const classNameMerged = cn(
+    buttonVariants({ variant }),
+    "h-11 px-4 text-[0.95rem]",
+    className,
+  );
+  const content = (
+    <>
       {children}
       {external ? (
         <>
@@ -36,6 +30,24 @@ export function LinkButton({
           <span className="sr-only"> (opens in a new tab)</span>
         </>
       ) : null}
-    </Button>
+    </>
+  );
+
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={classNameMerged}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      className={classNameMerged}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {content}
+    </a>
   );
 }

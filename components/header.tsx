@@ -1,16 +1,17 @@
+import Link from "next/link";
 import { nav, person } from "@/lib/site";
 
 function NavLinks({ className }: { className?: string }) {
   return (
     <nav aria-label="Page" className={className}>
       {nav.map((item) => (
-        <a
+        <Link
           key={item.href}
           href={item.href}
           className="shrink-0 text-sm text-[#5c564c] transition-colors hover:text-[#1c1915] focus-visible:text-[#1c1915]"
         >
           {item.label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
@@ -21,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-[#ddd4c6] bg-[#f3efe6]/92 backdrop-blur-md">
       <div className="h-[3px] bg-[#7c2f14]" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:py-3.5">
-        <a href="#work" className="flex items-center gap-2.5 justify-self-start">
+        <Link href="/#work" className="flex items-center gap-2.5 justify-self-start">
           <span
             aria-hidden="true"
             className="flex size-8 items-center justify-center bg-[#1c1915] font-serif text-lg leading-none text-[#f3efe6]"
@@ -31,7 +32,7 @@ export function Header() {
           <span className="font-serif text-[1.05rem] leading-none tracking-tight">
             {person.shortName}
           </span>
-        </a>
+        </Link>
         <NavLinks className="hidden items-center gap-5 lg:flex" />
         <a
           href={person.phoneHref}
