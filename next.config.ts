@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  // Relative prefix so the export works from a web root and from file://.
+  assetPrefix: ".",
 };
 
 export default nextConfig;

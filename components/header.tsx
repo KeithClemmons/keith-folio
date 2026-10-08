@@ -1,18 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
 import { nav, person } from "@/lib/site";
 
 function NavLinks({ className }: { className?: string }) {
   return (
     <nav aria-label="Page" className={className}>
       {nav.map((item) => (
-        <Link
+        <a
           key={item.href}
           href={item.href}
           className="shrink-0 text-sm text-white/80 transition-colors hover:text-white focus-visible:text-white"
         >
           {item.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );
@@ -23,16 +21,15 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#202c45]/92 backdrop-blur-md">
       <div className="h-[3px] bg-[#f21b51]" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:py-3.5">
-        <Link href="/#work" className="justify-self-start">
-          <Image
-            src="/logo-white.png"
+        <a href="index.html#work" className="justify-self-start">
+          <img
+            src="logo-white.png"
             alt="Keith Clemmons"
             width={206}
             height={36}
-            priority
             className="h-8 w-auto sm:h-9"
           />
-        </Link>
+        </a>
         <NavLinks className="hidden items-center gap-5 lg:flex" />
         <a
           href={person.phoneHref}

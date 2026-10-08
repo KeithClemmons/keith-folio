@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Link from "next/link";
 import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/header";
 import { Atmosphere } from "@/components/weather";
@@ -105,12 +104,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <Atmosphere />
-        <Link
-          href="/#work"
+        <a
+          href="index.html#work"
           className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[#202c45] focus:px-3 focus:py-2 focus:text-white"
         >
           Skip to content
-        </Link>
+        </a>
         <Header />
         {children}
         <script

@@ -19,7 +19,7 @@ export default function NotFound() {
         The site is one page. The phone still works.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <LinkButton href="/" className="px-5">
+        <LinkButton href="index.html" className="px-5">
           Back to the front
         </LinkButton>
         <LinkButton href={person.phoneHref} variant="outline" className="px-5">
