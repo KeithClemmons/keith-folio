@@ -1,7 +1,7 @@
 const drops = Array.from({ length: 42 }, (_, index) => ({
   left: `${(index * 47) % 100}%`,
-  delay: `${(index % 14) * 0.13}s`,
-  duration: `${0.85 + (index % 8) * 0.16}s`,
+  delay: `${(index % 14) * 0.45}s`,
+  duration: `${4.2 + (index % 8) * 0.85}s`,
   height: 14 + (index % 6) * 7,
   pink: index % 3 === 0,
 }));
@@ -57,7 +57,7 @@ export function Atmosphere() {
         {drops.map((drop, index) => (
           <span
             key={index}
-            className={drop.pink ? "drop drop-pink" : "drop"}
+            className={drop.pink ? "drop drop-blue" : "drop"}
             style={{
               left: drop.left,
               height: drop.height,

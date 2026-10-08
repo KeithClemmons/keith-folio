@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Fraunces, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/header";
 import { Atmosphere } from "@/components/weather";
 import { description, links, person } from "@/lib/site";
@@ -20,6 +20,13 @@ const instrumentSerif = Instrument_Serif({
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
 });
 
 const title = "Keith Clemmons — Web development, AI systems, and automation";
@@ -64,11 +71,10 @@ const jsonLd = {
   name: "Jason Keith Clemmons",
   alternateName: ["Keith Clemmons", "J. Keith Clemmons"],
   jobTitle: "Lead developer",
-  telephone: "+1-678-412-5987",
   url: "https://keithclemmons.com/",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Smyrna",
+    addressLocality: "Atlanta",
     addressRegion: "GA",
     addressCountry: "US",
   },
@@ -100,7 +106,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Atmosphere />

@@ -7,10 +7,8 @@
 export const person = {
   name: "Jason “Keith” Clemmons",
   shortName: "Keith Clemmons",
-  phoneDisplay: "678-412-5987",
-  phoneHref: "tel:+16784125987",
-  location: "Smyrna, Georgia",
-  locationShort: "Smyrna, GA",
+  location: "Atlanta, Georgia",
+  locationShort: "Atlanta, GA",
 } as const;
 
 export const links = {
@@ -56,4 +54,4 @@ export const testimonials = [
 ] as const;
 
 export const description =
-  "Jason “Keith” Clemmons builds websites and the systems around them: sites, SEO, email, content, and AI agents that do real work. Lead developer at GutRx. Based in Smyrna, Georgia.";
+  "Jason “Keith” Clemmons builds websites and the systems around them: sites, SEO, email, content, and AI agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";

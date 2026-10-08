@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/contact-form";
 import { LinkButton } from "@/components/link-button";
 import { StormStage, WaterDivide } from "@/components/weather";
 import { links, person, systems, testimonials } from "@/lib/site";
@@ -53,7 +54,7 @@ export default function Home() {
             <p className="mt-4 font-serif text-2xl tracking-tight text-white">
               {person.name}
             </p>
-            <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[0.92] tracking-[-0.035em] text-white">
+            <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[0.92] tracking-[-0.035em] text-white">
               Web development,
               <br />
               AI systems,
@@ -78,8 +79,8 @@ export default function Home() {
               ))}
             </ul>
             <div className="mt-8">
-              <LinkButton href={person.phoneHref} className="w-full px-5 sm:w-auto">
-                Call {person.phoneDisplay}
+              <LinkButton href="index.html#contact" className="w-full px-5 sm:w-auto">
+                Contact
               </LinkButton>
             </div>
           </div>
@@ -221,7 +222,7 @@ export default function Home() {
             </h2>
             <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed">
               <p>
-                I’m based in Smyrna, Georgia, and I’m available for freelance
+                I’m based in Atlanta, Georgia, and I’m available for freelance
                 when the project is a fit.
               </p>
               <p>
@@ -268,15 +269,10 @@ export default function Home() {
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
-            <a
-              href={person.phoneHref}
-              className="phone-3d mt-6 inline-block max-w-full font-serif text-[clamp(2.25rem,8vw,4.5rem)] leading-none tracking-[-0.03em] text-white underline decoration-[#f21b51] decoration-2 underline-offset-[0.18em] hover:decoration-white"
-            >
-              {person.phoneDisplay}
-            </a>
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-[#c5cedd]">
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[#c5cedd]">
               Available for freelance when the project is a fit.
             </p>
+            <ContactForm />
           </div>
         </section>
       </main>

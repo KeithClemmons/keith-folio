@@ -1,4 +1,4 @@
-import { nav, person } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 function NavLinks({ className }: { className?: string }) {
   return (
@@ -32,11 +32,10 @@ export function Header() {
         </a>
         <NavLinks className="hidden items-center gap-5 lg:flex" />
         <a
-          href={person.phoneHref}
+          href="index.html#contact"
           className="justify-self-end font-mono text-sm tracking-wide text-white underline decoration-[#f21b51] underline-offset-4 hover:text-[#ff8eab]"
         >
-          <span className="sm:hidden">Call</span>
-          <span className="hidden sm:inline">{person.phoneDisplay}</span>
+          Contact
         </a>
       </div>
       <div className="mx-auto max-w-6xl px-5 pb-3 lg:hidden">

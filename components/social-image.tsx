@@ -26,7 +26,7 @@ export function socialImage() {
             color: "#f21b51",
           }}
         >
-          Jason “Keith” Clemmons · Smyrna, Georgia
+          Jason “Keith” Clemmons · Atlanta, Georgia
         </div>
         <div
           style={{
