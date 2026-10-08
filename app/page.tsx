@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/contact-form";
 import { LinkButton } from "@/components/link-button";
-import { StormStage, WaterDivide } from "@/components/weather";
+import { StormStage } from "@/components/weather";
 import { links, person, systems, testimonials } from "@/lib/site";
 
 function Eyebrow({
@@ -84,7 +84,6 @@ export default function Home() {
               </LinkButton>
             </div>
           </div>
-          <WaterDivide />
         </section>
 
         <section id="gutrx" className="slant-panel">
@@ -262,7 +261,6 @@ export default function Home() {
           </div>
         </section>
 
-        <WaterDivide />
         <section id="contact" className="rise bg-[#202c45] text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
             <Eyebrow className="text-[#ff8eab]">06 — Contact</Eyebrow>

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/header";
-import { Atmosphere } from "@/components/weather";
+import { Atmosphere, PaperWaves } from "@/components/weather";
 import { description, links, person } from "@/lib/site";
 import "./globals.css";
 
@@ -118,6 +118,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <Header />
         {children}
+        <PaperWaves />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

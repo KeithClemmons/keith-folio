@@ -297,58 +297,35 @@
   50% { transform: translate3d(18px, -22px, 60px) rotateY(16deg) rotateX(-6deg); }
 }
 
-.water-divide {
-  position: relative;
-  z-index: 2;
-  height: 92px;
-  margin-top: -1rem;
-  margin-bottom: -2.5rem;
+body {
+  padding-bottom: clamp(11.5rem, 28vh, 17.5rem);
+}
+
+.paper-waves {
+  position: fixed;
+  z-index: 30;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(11.5rem, 28vh, 17.5rem);
   pointer-events: none;
 }
 
-.water-divide svg {
+.paper-waves svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.water-back {
-  fill: rgba(255, 255, 255, 0.16);
+.paper-sheet {
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 8px 3px rgba(6, 22, 48, 0.45));
 }
 
-.water-front {
-  fill: #8eacd4;
-  opacity: 0.92;
-}
-
-.puddle {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 8px;
-  height: 28px;
-  filter: url(#goo);
-}
-
-.puddle span {
-  position: absolute;
-  bottom: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #8eacd4;
-  animation: drip 2.8s ease-in-out infinite;
-}
-
-.puddle span:nth-child(1) { left: 8%; }
-.puddle span:nth-child(2) { left: 28%; animation-delay: 0.4s; background: #fff; }
-.puddle span:nth-child(3) { left: 47%; animation-delay: 0.9s; }
-.puddle span:nth-child(4) { left: 66%; animation-delay: 0.2s; background: #fff; }
-.puddle span:nth-child(5) { left: 84%; animation-delay: 1.2s; }
-
-@keyframes drip {
-  0%, 100% { transform: translateY(6px) scale(1); }
-  50% { transform: translateY(-10px) scale(1.35); }
+.paper-foam {
+  filter: drop-shadow(0 4px 2px rgba(6, 22, 48, 0.28));
 }
 
 .slant-panel {
@@ -436,7 +413,6 @@
   .cloud,
   .drop,
   .storm-cloud,
-  .puddle span,
   .rise,
   .cloud-field {
     animation: none !important;
