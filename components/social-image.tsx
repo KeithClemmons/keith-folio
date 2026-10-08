@@ -12,8 +12,8 @@ export function socialImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f3efe6",
-          color: "#1c1915",
+          background: "#202c45",
+          color: "#ffffff",
           padding: "72px",
         }}
       >
@@ -23,7 +23,7 @@ export function socialImage() {
             fontSize: 24,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: "#7c2f14",
+            color: "#f21b51",
           }}
         >
           Jason “Keith” Clemmons · Smyrna, Georgia

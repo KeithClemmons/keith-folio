@@ -1,9 +1,10 @@
 import { LinkButton } from "@/components/link-button";
+import { StormStage, WaterDivide } from "@/components/weather";
 import { links, person, systems, testimonials } from "@/lib/site";
 
 function Eyebrow({
   children,
-  className = "text-[#7c2f14]",
+  className = "text-[#ff8eab]",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -29,7 +30,7 @@ function ExternalAnchor({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-medium text-[#7c2f14] underline decoration-[#7c2f14]/35 underline-offset-[0.2em] hover:decoration-[#7c2f14]"
+      className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
     >
       {children}
       <span className="sr-only"> (opens in a new tab)</span>
@@ -40,34 +41,35 @@ function ExternalAnchor({
 export default function Home() {
   return (
     <>
-      <main className="flex-1">
-        <section id="work" tabIndex={-1} className="outline-none">
-          <div className="mx-auto max-w-6xl px-5 pt-12 pb-14 md:pt-20 md:pb-20">
+      <main className="relative z-[1] flex-1">
+        <section id="work" tabIndex={-1} className="hero-sky outline-none">
+          <StormStage />
+          <div className="relative z-10 mx-auto max-w-6xl px-5 pt-12 pb-14 md:pt-20 md:pb-16">
             <Eyebrow>
               01 — The work
               <span aria-hidden="true"> · </span>
               {person.location}
             </Eyebrow>
-            <p className="mt-4 font-serif text-2xl tracking-tight text-[#1c1915]">
+            <p className="mt-4 font-serif text-2xl tracking-tight text-white">
               {person.name}
             </p>
-            <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[0.92] tracking-[-0.035em] text-[#1c1915]">
+            <h1 className="mt-4 max-w-4xl font-serif text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[0.92] tracking-[-0.035em] text-white">
               Web development,
               <br />
               AI systems,
               <br />
               and <span className="italic">automation.</span>
             </h1>
-            <div className="mt-8 h-px w-14 bg-[#7c2f14]" />
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#1c1915] md:text-xl md:leading-relaxed">
+            <div className="mt-8 h-px w-14 bg-[#f21b51]" />
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
               I build websites and the systems around them: sites, SEO, email,
               content, and AI agents that do real work.
             </p>
-            <ul className="mt-6 flex list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#5c564c]">
+            <ul className="slash-ribbon mt-6 list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
               {systems.map((item, index) => (
                 <li key={item} className="flex items-center gap-2">
                   {index > 0 ? (
-                    <span aria-hidden="true" className="text-[#7c2f14]">
+                    <span aria-hidden="true" className="text-[#f21b51]">
                       /
                     </span>
                   ) : null}
@@ -81,10 +83,11 @@ export default function Home() {
               </LinkButton>
             </div>
           </div>
+          <WaterDivide />
         </section>
 
-        <section id="gutrx" className="border-y border-[#ddd4c6] bg-[#e8e0d2]">
-          <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 md:grid-cols-12 md:gap-12 md:py-20">
+        <section id="gutrx" className="slant-panel">
+          <div className="mx-auto grid max-w-6xl gap-8 px-5 pt-20 pb-16 md:grid-cols-12 md:gap-12 md:pt-28 md:pb-24">
             <div className="md:col-span-5">
               <Eyebrow>02 — Now</Eyebrow>
               <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
@@ -109,7 +112,7 @@ export default function Home() {
                   href={links.gutrxAbout}
                   external
                   variant="outline"
-                  className="w-full bg-[#f3efe6] px-5 sm:w-auto"
+                  className="w-full bg-transparent px-5 text-white sm:w-auto"
                 >
                   The doctors
                 </LinkButton>
@@ -125,10 +128,10 @@ export default function Home() {
               Three businesses I own.
             </h2>
 
-            <div className="mt-10 border-t border-[#ddd4c6]">
-              <article className="grid gap-4 border-b border-[#ddd4c6] py-8 md:grid-cols-12 md:gap-10 md:py-10">
+            <div className="tilt-deck mt-10 border-t border-white/15">
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
                 <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#5c564c]">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
                     Search marketing
                   </p>
                   <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -148,9 +151,9 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="grid gap-4 border-b border-[#ddd4c6] py-8 md:grid-cols-12 md:gap-10 md:py-10">
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
                 <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#5c564c]">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
                     Marketing studio
                   </p>
                   <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -165,7 +168,7 @@ export default function Home() {
                     studio phone line is{" "}
                     <a
                       href={links.greenOwlPhoneHref}
-                      className="font-medium text-[#7c2f14] underline decoration-[#7c2f14]/35 underline-offset-[0.2em] hover:decoration-[#7c2f14]"
+                      className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
                     >
                       {links.greenOwlPhoneDisplay}
                     </a>
@@ -179,9 +182,9 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="grid gap-4 border-b border-[#ddd4c6] py-8 md:grid-cols-12 md:gap-10 md:py-10">
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
                 <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#5c564c]">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
                     Invoicing software
                   </p>
                   <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -210,8 +213,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="background" className="border-y border-[#ddd4c6] bg-[#f7f4ee]">
-          <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+        <section id="background" className="slant-panel-alt rise">
+          <div className="mx-auto max-w-6xl px-5 pt-16 pb-20 md:pt-24 md:pb-28">
             <Eyebrow>04 — Background</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Web design, marketing, and IT since 2009.
@@ -230,25 +233,25 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients">
+        <section id="clients" className="rise">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
             <Eyebrow>05 — In their words</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               What clients have said.
             </h2>
-            <div className="mt-8 border-t border-[#ddd4c6]">
+            <div className="mt-8 border-t border-white/15">
               {testimonials.map((item) => (
                 <figure
                   key={item.name}
-                  className="border-b border-[#ddd4c6] py-8 md:py-10"
+                  className="border-b border-white/15 py-8 md:py-10"
                 >
                   <blockquote>
-                    <p className="pull-quote max-w-3xl font-serif text-[1.35rem] leading-snug tracking-[-0.02em] text-[#1c1915] md:text-[1.7rem] md:leading-snug">
+                    <p className="pull-quote max-w-3xl font-serif text-[1.35rem] leading-snug tracking-[-0.02em] text-white md:text-[1.7rem] md:leading-snug">
                       {item.quote}
                     </p>
                   </blockquote>
-                  <figcaption className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[#5c564c]">
-                    <span className="text-[#1c1915]">{item.name}</span>
+                  <figcaption className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[#c5cedd]">
+                    <span className="text-white">{item.name}</span>
                     <span aria-hidden="true"> · </span>
                     <span>{item.role}</span>
                   </figcaption>
@@ -258,25 +261,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-[#1b1814] text-[#f4f0e7]">
+        <WaterDivide />
+        <section id="contact" className="rise bg-[#202c45] text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-            <Eyebrow className="text-[#e7a08a]">06 — Contact</Eyebrow>
+            <Eyebrow className="text-[#ff8eab]">06 — Contact</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
             <a
               href={person.phoneHref}
-              className="mt-6 inline-block max-w-full font-serif text-[clamp(2.25rem,8vw,4.5rem)] leading-none tracking-[-0.03em] text-[#f4f0e7] underline decoration-[#e7a08a] decoration-2 underline-offset-[0.18em] hover:decoration-[#f4f0e7]"
+              className="phone-3d mt-6 inline-block max-w-full font-serif text-[clamp(2.25rem,8vw,4.5rem)] leading-none tracking-[-0.03em] text-white underline decoration-[#f21b51] decoration-2 underline-offset-[0.18em] hover:decoration-white"
             >
               {person.phoneDisplay}
             </a>
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-[#d9d2c5]">
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-[#c5cedd]">
               Available for freelance when the project is a fit.
             </p>
           </div>
         </section>
       </main>
-      <footer className="bg-[#1b1814] text-[#d9d2c5]">
+      <footer className="relative z-[1] bg-[#202c45] text-[#c5cedd]">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-white/15 px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {person.name}</p>
           <ul className="flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
@@ -290,7 +294,7 @@ export default function Home() {
             ).map(([label, href]) => (
               <li key={href}>
                 <a
-                  className="underline underline-offset-4 hover:text-[#f4f0e7]"
+                  className="underline decoration-[#f21b51] underline-offset-4 hover:text-white"
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"

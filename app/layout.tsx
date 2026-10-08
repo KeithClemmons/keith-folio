@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/header";
+import { Atmosphere } from "@/components/weather";
 import { description, links, person } from "@/lib/site";
 import "./globals.css";
 
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3efe6",
+  themeColor: "#202c45",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -103,9 +104,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <Atmosphere />
         <Link
           href="/#work"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[#f3efe6] focus:px-3 focus:py-2 focus:text-[#1c1915]"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[#202c45] focus:px-3 focus:py-2 focus:text-white"
         >
           Skip to content
         </Link>
