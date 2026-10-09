@@ -72,9 +72,13 @@ export const tools = [
   "Screaming Frog",
   "Mailchimp",
   "n8n",
+  "Claude Code",
+  "Codex",
+  "Open Claw",
+  "Hermes Agent",
 ] as const;
 
-export const systems = ["Sites", "SEO", "Email", "Content", "AI agents"] as const;
+export const systems = ["Sites", "SEO", "IT", "Content", "AI agents"] as const;
 
 export const testimonials = [
   {
@@ -98,4 +102,4 @@ export const testimonials = [
 ] as const;
 
 export const description =
-  "Jason “Keith” Clemmons builds websites and the systems around them: sites, SEO, email, content, and AI agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";
+  "Jason “Keith” Clemmons builds websites and the systems around them: code, SEO, email, content, and AI agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";

@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact-form";
 import { LinkButton } from "@/components/link-button";
 import { StormStage } from "@/components/weather";
-import { experience, links, person, systems, testimonials, tools } from "@/lib/site";
+import { experience, links, nav, person, systems, testimonials, tools } from "@/lib/site";
 
 function Eyebrow({
   children,
@@ -59,7 +59,7 @@ export default function Home() {
             </h1>
             <div className="mt-6 h-px w-14 bg-[#f21b51]" />
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
-              I build websites and the systems around them: sites, SEO, email,
+              I build websites and the systems around them: code, SEO, email,
               content, and AI agents that do real work.
             </p>
             <ul className="slash-ribbon mt-6 list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
@@ -110,9 +110,6 @@ export default function Home() {
                     <ExternalAnchor href={links.gutrx}>GutRx</ExternalAnchor>, a
                     probiotic brand. I built the website, administer the site, and
                     handle SEO, email marketing, and blogging.
-                  </p>
-                  <p className="mt-4 max-w-xl text-lg leading-relaxed">
-                    The public about page is the doctors who guide the formulas.
                   </p>
                   <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
@@ -354,24 +351,13 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-white/15 px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {person.name}</p>
           <ul className="flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
-            {(
-              [
-                ["GutRx", links.gutrx],
-                ["Dev site", links.dev],
-                ["Acupuncture SEO", links.acupunctureSeo],
-                ["Green Owl Marketing", links.greenOwl],
-                ["Agent Invoice", links.agentInvoice],
-              ] as const
-            ).map(([label, href]) => (
-              <li key={href}>
+            {nav.map((item) => (
+              <li key={item.href}>
                 <a
                   className="underline decoration-[#f21b51] underline-offset-4 hover:text-white"
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={item.href}
                 >
-                  {label}
-                  <span className="sr-only"> (opens in a new tab)</span>
+                  {item.label}
                 </a>
               </li>
             ))}
