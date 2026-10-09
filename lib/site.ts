@@ -34,7 +34,7 @@ export const experience = [
     org: "Kings Fine Art & Decor",
     years: "2024 – 2025",
     summary:
-      "Built a 30,000-SKU Shopify site, with the structure, templates, schema, and metadata for SEO. Ran social, paid, and email campaigns, set up GA4 and GTM, and built KPI dashboards in Looker Studio.",
+      "Built a 30,000-SKU Shopify site, with the structure, templates, schema, and metadata for SEO. Ran social, paid, and email campaigns, and built Python scripts for art categorization, vendor catalog scraping, and building Shopify upload files.",
   },
   {
     role: "Advertising Manager",
