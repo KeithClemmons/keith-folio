@@ -89,41 +89,128 @@ export default function Home() {
               Where I work now.
             </h2>
 
-            <article
-              id="gutrx"
-              className="mt-10 grid gap-4 border-t border-white/15 pt-8 md:grid-cols-12 md:gap-10 md:pt-10"
-            >
-              <div className="md:col-span-4">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
-                  Lead developer
-                </p>
-                <h3 className="mt-2 font-serif text-3xl tracking-tight">GutRx</h3>
-              </div>
-              <div className="md:col-span-8">
-                <p className="max-w-xl text-lg leading-relaxed">
-                  I’m the lead developer at{" "}
-                  <ExternalAnchor href={links.gutrx}>GutRx</ExternalAnchor>, a
-                  probiotic brand. I built the website, administer the site, and
-                  handle SEO, email marketing, and blogging.
-                </p>
-                <p className="mt-4 max-w-xl text-lg leading-relaxed">
-                  The public about page is the doctors who guide the formulas.
-                </p>
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
-                    Visit GutRx
-                  </LinkButton>
-                  <LinkButton
-                    href={links.gutrxAbout}
-                    external
-                    variant="outline"
-                    className="w-full bg-transparent px-5 text-white sm:w-auto"
-                  >
-                    The doctors
-                  </LinkButton>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+              I’m the lead developer at GutRx, and I own three businesses.
+            </p>
+
+            <div className="tilt-deck mt-10 border-t border-white/15">
+              <article
+                id="gutrx"
+                className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10"
+              >
+                <div className="md:col-span-4">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    Lead developer
+                  </p>
+                  <h3 className="mt-2 font-serif text-3xl tracking-tight">GutRx</h3>
                 </div>
-              </div>
-            </article>
+                <div className="md:col-span-8">
+                  <p className="max-w-xl text-lg leading-relaxed">
+                    I’m the lead developer at{" "}
+                    <ExternalAnchor href={links.gutrx}>GutRx</ExternalAnchor>, a
+                    probiotic brand. I built the website, administer the site, and
+                    handle SEO, email marketing, and blogging.
+                  </p>
+                  <p className="mt-4 max-w-xl text-lg leading-relaxed">
+                    The public about page is the doctors who guide the formulas.
+                  </p>
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
+                      Visit GutRx
+                    </LinkButton>
+                    <LinkButton
+                      href={links.gutrxAbout}
+                      external
+                      variant="outline"
+                      className="w-full bg-transparent px-5 text-white sm:w-auto"
+                    >
+                      The doctors
+                    </LinkButton>
+                  </div>
+                </div>
+              </article>
+
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <div className="md:col-span-4">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    Owner<span aria-hidden="true"> · </span>Search marketing
+                  </p>
+                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
+                    Acupuncture SEO
+                  </h3>
+                </div>
+                <div className="md:col-span-8">
+                  <p className="max-w-xl text-lg leading-relaxed">
+                    Search marketing for acupuncture clinics. I have owned it
+                    since 2013, and I still run it.
+                  </p>
+                  <p className="mt-4">
+                    <ExternalAnchor href={links.acupunctureSeo}>
+                      acupunctureseo.com
+                    </ExternalAnchor>
+                  </p>
+                </div>
+              </article>
+
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <div className="md:col-span-4">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    Owner<span aria-hidden="true"> · </span>Marketing studio
+                  </p>
+                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
+                    Green Owl Marketing
+                  </h3>
+                </div>
+                <div className="md:col-span-8">
+                  <p className="max-w-xl text-lg leading-relaxed">
+                    Green Owl Marketing is my marketing studio. The live site
+                    offers an Authority Engine starter at $3,000 a month:
+                    autoblogging, links, and social posts from those blogs. The
+                    studio phone line is{" "}
+                    <a
+                      href={links.greenOwlPhoneHref}
+                      className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
+                    >
+                      {links.greenOwlPhoneDisplay}
+                    </a>
+                    .
+                  </p>
+                  <p className="mt-4">
+                    <ExternalAnchor href={links.greenOwl}>
+                      greenowlmarketing.com
+                    </ExternalAnchor>
+                  </p>
+                </div>
+              </article>
+
+              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <div className="md:col-span-4">
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    Owner<span aria-hidden="true"> · </span>Invoicing software
+                  </p>
+                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
+                    Agent Invoice
+                  </h3>
+                </div>
+                <div className="md:col-span-8">
+                  <p className="max-w-xl text-lg leading-relaxed">
+                    Agent Invoice is simple invoicing software I own. Zero
+                    commissions. Clients pay by card, PayPal, or bank ACH.
+                    There is a free plan.
+                  </p>
+                  <p className="mt-4 max-w-xl text-lg leading-relaxed">
+                    AI agents can create clients, draft invoices, send billing
+                    emails, and react to payments through a REST API, webhooks,
+                    and an MCP server.
+                  </p>
+                  <p className="mt-4">
+                    <ExternalAnchor href={links.agentInvoice}>
+                      agent-invoice.com
+                    </ExternalAnchor>
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -158,101 +245,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="companies">
-          <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>03 — Companies</Eyebrow>
-            <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
-              Three businesses I own.
-            </h2>
-
-            <div className="tilt-deck mt-10 border-t border-white/15">
-              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
-                <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
-                    Search marketing
-                  </p>
-                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
-                    Acupuncture SEO
-                  </h3>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="max-w-xl text-lg leading-relaxed">
-                    Search marketing for acupuncture clinics. I have owned it
-                    since 2013, and I still run it.
-                  </p>
-                  <p className="mt-4">
-                    <ExternalAnchor href={links.acupunctureSeo}>
-                      acupunctureseo.com
-                    </ExternalAnchor>
-                  </p>
-                </div>
-              </article>
-
-              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
-                <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
-                    Marketing studio
-                  </p>
-                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
-                    Green Owl Marketing
-                  </h3>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="max-w-xl text-lg leading-relaxed">
-                    Green Owl Marketing is my marketing studio. The live site
-                    offers an Authority Engine starter at $3,000 a month:
-                    autoblogging, links, and social posts from those blogs. The
-                    studio phone line is{" "}
-                    <a
-                      href={links.greenOwlPhoneHref}
-                      className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
-                    >
-                      {links.greenOwlPhoneDisplay}
-                    </a>
-                    .
-                  </p>
-                  <p className="mt-4">
-                    <ExternalAnchor href={links.greenOwl}>
-                      greenowlmarketing.com
-                    </ExternalAnchor>
-                  </p>
-                </div>
-              </article>
-
-              <article className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
-                <div className="md:col-span-4">
-                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
-                    Invoicing software
-                  </p>
-                  <h3 className="mt-2 font-serif text-3xl tracking-tight">
-                    Agent Invoice
-                  </h3>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="max-w-xl text-lg leading-relaxed">
-                    Agent Invoice is simple invoicing software I own. Zero
-                    commissions. Clients pay by card, PayPal, or bank ACH.
-                    There is a free plan.
-                  </p>
-                  <p className="mt-4 max-w-xl text-lg leading-relaxed">
-                    AI agents can create clients, draft invoices, send billing
-                    emails, and react to payments through a REST API, webhooks,
-                    and an MCP server.
-                  </p>
-                  <p className="mt-4">
-                    <ExternalAnchor href={links.agentInvoice}>
-                      agent-invoice.com
-                    </ExternalAnchor>
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
         <section id="background" className="slant-panel-alt rise">
           <div className="mx-auto max-w-6xl px-5 pt-16 pb-20 md:pt-24 md:pb-28">
-            <Eyebrow>04 — Background</Eyebrow>
+            <Eyebrow>03 — Background</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Web design, marketing, and IT since 2009.
             </h2>
@@ -270,9 +265,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients" className="rise">
+        <section id="references" className="rise">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>05 — In their words</Eyebrow>
+            <Eyebrow>04 — References</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               What clients have said.
             </h2>
@@ -300,7 +295,7 @@ export default function Home() {
 
         <section id="contact" className="rise bg-[#202c45] text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-            <Eyebrow className="text-[#ff8eab]">06 — Contact</Eyebrow>
+            <Eyebrow className="text-[#ff8eab]">05 — Contact</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
