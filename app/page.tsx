@@ -115,14 +115,6 @@ export default function Home() {
                     <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
                       Visit GutRx
                     </LinkButton>
-                    <LinkButton
-                      href={links.gutrxAbout}
-                      external
-                      variant="outline"
-                      className="w-full bg-transparent px-5 text-white sm:w-auto"
-                    >
-                      The doctors
-                    </LinkButton>
                   </div>
                 </div>
               </article>

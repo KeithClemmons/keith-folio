@@ -13,7 +13,6 @@ export const person = {
 
 export const links = {
   gutrx: "https://gutrx.com",
-  gutrxAbout: "https://gutrx.com/pages/about-gutrx",
   acupunctureSeo: "https://acupunctureseo.com",
   greenOwl: "https://greenowlmarketing.com",
   greenOwlPhoneDisplay: "256-OWL-HUNT",
