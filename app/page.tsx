@@ -45,11 +45,19 @@ export default function Home() {
       <main className="relative z-[1] flex-1">
         <section id="top" className="hero-sky">
           <StormStage />
-          <div className="relative z-10 mx-auto max-w-6xl px-5 pt-10 pb-14 md:pt-12 md:pb-16">
-            <Eyebrow>{person.location}</Eyebrow>
-            <p className="mt-4 font-serif text-2xl tracking-tight text-white">
-              {person.name}
-            </p>
+          <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 pt-8 pb-14 md:grid-cols-[minmax(0,1fr)_17rem] md:pt-12 md:pb-16 lg:grid-cols-[minmax(0,1fr)_19rem]">
+            <div>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <Eyebrow>{person.location}</Eyebrow>
+                <p className="mt-4 font-serif text-2xl tracking-tight text-white">
+                  {person.name}
+                </p>
+              </div>
+              <figure className="portrait-frame w-28 shrink-0 sm:w-32 md:hidden">
+                <img src="keith.jpg" alt="Jason “Keith” Clemmons" width={960} height={1206} />
+              </figure>
+            </div>
             <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[0.92] tracking-[-0.035em] text-white">
               Web development,
               <br />
@@ -79,6 +87,10 @@ export default function Home() {
                 Contact
               </LinkButton>
             </div>
+            </div>
+            <figure className="portrait-frame hidden md:block">
+              <img src="keith.jpg" alt="Jason “Keith” Clemmons" width={960} height={1206} />
+            </figure>
           </div>
         </section>
 

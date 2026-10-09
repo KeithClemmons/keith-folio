@@ -72,6 +72,7 @@ const jsonLd = {
   alternateName: ["Keith Clemmons", "J. Keith Clemmons"],
   jobTitle: "Lead developer",
   url: "https://keithclemmons.com/",
+  image: "https://keithclemmons.com/keith.jpg",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Atlanta",

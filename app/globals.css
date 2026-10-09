@@ -254,6 +254,29 @@
   isolation: isolate;
 }
 
+.portrait-frame {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  padding: 0.55rem;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.7),
+    0 16px 28px rgba(4, 12, 28, 0.28),
+    0 36px 60px rgba(4, 12, 28, 0.38);
+  animation: portrait-float 8s ease-in-out infinite;
+}
+
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes portrait-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
 .storm-stage {
   position: absolute;
   inset: 0;
@@ -399,7 +422,8 @@ body {
   .drop,
   .storm-cloud,
   .rise,
-  .cloud-field {
+  .cloud-field,
+  .portrait-frame {
     animation: none !important;
   }
   .drop {
