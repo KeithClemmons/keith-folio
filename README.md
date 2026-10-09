@@ -4,6 +4,8 @@ Personal site for Jason “Keith” Clemmons. One static page: web development, 
 
 There is no database. The form posts to `contact.php`, which sends the note to Keith’s email from the Hostinger server. The address is not printed on the page. Opening the site from disk shows the form, but mail is sent only after the files are on the host.
 
+The paper-cut ocean along the bottom of the screen is drawn on a canvas by `public/ocean.js`, a plain script with no dependencies. It is loaded as a classic script rather than a module so it also runs when the page is opened from disk. With reduced motion turned on, it draws one still frame.
+
 ## Local preview
 
 Requires Node.js 20 or newer.

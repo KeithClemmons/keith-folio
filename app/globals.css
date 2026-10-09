@@ -301,40 +301,16 @@ body {
   padding-bottom: clamp(7.5rem, 17vh, 11.5rem);
 }
 
-.ocean {
+.ocean-canvas {
   position: fixed;
   z-index: 30;
   right: 0;
   bottom: 0;
   left: 0;
+  display: block;
+  width: 100%;
   height: clamp(7.5rem, 17vh, 11.5rem);
-  overflow: hidden;
   pointer-events: none;
-}
-
-.ocean-floor {
-  position: absolute;
-  z-index: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 34%;
-  background: linear-gradient(to bottom, rgba(23, 52, 112, 0), #173470 45%, #132a5c);
-}
-
-.ocean-wave {
-  position: absolute;
-  left: 0;
-  width: auto;
-  max-width: none;
-  user-select: none;
-  will-change: transform;
-  animation: ocean-drift linear infinite;
-}
-
-@keyframes ocean-drift {
-  from { transform: translate3d(-100%, 0, 0); }
-  to { transform: translate3d(100vw, 0, 0); }
 }
 
 .slant-panel {
@@ -423,13 +399,8 @@ body {
   .drop,
   .storm-cloud,
   .rise,
-  .cloud-field,
-  .ocean-wave {
+  .cloud-field {
     animation: none !important;
-  }
-  .ocean-wave {
-    left: var(--rest);
-    transform: translateX(-50%);
   }
   .drop {
     display: none;

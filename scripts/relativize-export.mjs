@@ -29,7 +29,7 @@ for (const file of await htmlFiles(outDir)) {
       .replaceAll('src="./_next/', `src="${prefix}_next/`)
       .replaceAll('href="logo-white.png"', `href="${prefix}logo-white.png"`)
       .replaceAll('src="logo-white.png"', `src="${prefix}logo-white.png"`)
-      .replaceAll('src="waves/', `src="${prefix}waves/`)
+      .replaceAll('src="ocean.js"', `src="${prefix}ocean.js"`)
       .replaceAll('href="index.html', `href="${prefix}index.html`);
   }
   if (text !== original) {
