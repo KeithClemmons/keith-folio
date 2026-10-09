@@ -23,7 +23,6 @@ export const links = {
 
 export const nav = [
   { href: "index.html#work", label: "Work" },
-  { href: "index.html#gutrx", label: "GutRx" },
   { href: "index.html#companies", label: "Companies" },
   { href: "index.html#background", label: "Background" },
   { href: "index.html#clients", label: "Clients" },

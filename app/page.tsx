@@ -43,14 +43,10 @@ export default function Home() {
   return (
     <>
       <main className="relative z-[1] flex-1">
-        <section id="work" tabIndex={-1} className="hero-sky outline-none">
+        <section id="top" className="hero-sky">
           <StormStage />
           <div className="relative z-10 mx-auto max-w-6xl px-5 pt-10 pb-14 md:pt-12 md:pb-16">
-            <Eyebrow>
-              01 — The work
-              <span aria-hidden="true"> · </span>
-              {person.location}
-            </Eyebrow>
+            <Eyebrow>{person.location}</Eyebrow>
             <p className="mt-4 font-serif text-2xl tracking-tight text-white">
               {person.name}
             </p>
@@ -86,44 +82,54 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="gutrx" className="slant-panel">
-          <div className="mx-auto grid max-w-6xl gap-8 px-5 pt-20 pb-16 md:grid-cols-12 md:gap-12 md:pt-28 md:pb-24">
-            <div className="md:col-span-5">
-              <Eyebrow>02 — Now</Eyebrow>
-              <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
-                Lead developer at GutRx
-              </h2>
-            </div>
-            <div className="md:col-span-7">
-              <p className="text-lg leading-relaxed">
-                I’m the lead developer at{" "}
-                <ExternalAnchor href={links.gutrx}>GutRx</ExternalAnchor>, a
-                probiotic brand. I built the website, administer the site, and
-                handle SEO, email marketing, and blogging.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed">
-                The public about page is the doctors who guide the formulas.
-              </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
-                  Visit GutRx
-                </LinkButton>
-                <LinkButton
-                  href={links.gutrxAbout}
-                  external
-                  variant="outline"
-                  className="w-full bg-transparent px-5 text-white sm:w-auto"
-                >
-                  The doctors
-                </LinkButton>
+        <section id="work" tabIndex={-1} className="slant-panel outline-none">
+          <div className="mx-auto max-w-6xl px-5 pt-20 pb-16 md:pt-28 md:pb-24">
+            <Eyebrow>01 — Work</Eyebrow>
+            <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
+              Where I work now.
+            </h2>
+
+            <article
+              id="gutrx"
+              className="mt-10 grid gap-4 border-t border-white/15 pt-8 md:grid-cols-12 md:gap-10 md:pt-10"
+            >
+              <div className="md:col-span-4">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                  Lead developer
+                </p>
+                <h3 className="mt-2 font-serif text-3xl tracking-tight">GutRx</h3>
               </div>
-            </div>
+              <div className="md:col-span-8">
+                <p className="max-w-xl text-lg leading-relaxed">
+                  I’m the lead developer at{" "}
+                  <ExternalAnchor href={links.gutrx}>GutRx</ExternalAnchor>, a
+                  probiotic brand. I built the website, administer the site, and
+                  handle SEO, email marketing, and blogging.
+                </p>
+                <p className="mt-4 max-w-xl text-lg leading-relaxed">
+                  The public about page is the doctors who guide the formulas.
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <LinkButton href={links.gutrx} external className="w-full px-5 sm:w-auto">
+                    Visit GutRx
+                  </LinkButton>
+                  <LinkButton
+                    href={links.gutrxAbout}
+                    external
+                    variant="outline"
+                    className="w-full bg-transparent px-5 text-white sm:w-auto"
+                  >
+                    The doctors
+                  </LinkButton>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
         <section id="companies">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>03 — Companies</Eyebrow>
+            <Eyebrow>02 — Companies</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Three businesses I own.
             </h2>
@@ -215,7 +221,7 @@ export default function Home() {
 
         <section id="background" className="slant-panel-alt rise">
           <div className="mx-auto max-w-6xl px-5 pt-16 pb-20 md:pt-24 md:pb-28">
-            <Eyebrow>04 — Background</Eyebrow>
+            <Eyebrow>03 — Background</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Web design, marketing, and IT since 2009.
             </h2>
@@ -235,7 +241,7 @@ export default function Home() {
 
         <section id="clients" className="rise">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>05 — In their words</Eyebrow>
+            <Eyebrow>04 — In their words</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               What clients have said.
             </h2>
@@ -263,7 +269,7 @@ export default function Home() {
 
         <section id="contact" className="rise bg-[#202c45] text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-            <Eyebrow className="text-[#ff8eab]">06 — Contact</Eyebrow>
+            <Eyebrow className="text-[#ff8eab]">05 — Contact</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
