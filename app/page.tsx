@@ -127,9 +127,40 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="dev">
+          <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
+            <Eyebrow>02 — Dev</Eyebrow>
+            <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
+              Apps, code, and dev stuff.
+            </h2>
+            <div className="mt-10 grid gap-4 border-t border-white/15 pt-8 md:grid-cols-12 md:gap-10 md:pt-10">
+              <div className="md:col-span-4">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                  Dev site
+                </p>
+                <h3 className="mt-2 font-serif text-3xl tracking-tight">
+                  dev.keithclemmons.com
+                </h3>
+              </div>
+              <div className="md:col-span-8">
+                <p className="max-w-xl text-lg leading-relaxed">
+                  The apps I build and the code behind them live on my dev
+                  site, including Audio Limiter Pro, a Chrome extension that
+                  evens out audio volume, and my GitHub repositories.
+                </p>
+                <div className="mt-7">
+                  <LinkButton href={links.dev} external className="w-full px-5 sm:w-auto">
+                    Visit the dev site
+                  </LinkButton>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="companies">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>02 — Companies</Eyebrow>
+            <Eyebrow>03 — Companies</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Three businesses I own.
             </h2>
@@ -221,7 +252,7 @@ export default function Home() {
 
         <section id="background" className="slant-panel-alt rise">
           <div className="mx-auto max-w-6xl px-5 pt-16 pb-20 md:pt-24 md:pb-28">
-            <Eyebrow>03 — Background</Eyebrow>
+            <Eyebrow>04 — Background</Eyebrow>
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Web design, marketing, and IT since 2009.
             </h2>
@@ -241,7 +272,7 @@ export default function Home() {
 
         <section id="clients" className="rise">
           <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-            <Eyebrow>04 — In their words</Eyebrow>
+            <Eyebrow>05 — In their words</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               What clients have said.
             </h2>
@@ -269,7 +300,7 @@ export default function Home() {
 
         <section id="contact" className="rise bg-[#202c45] text-white">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-            <Eyebrow className="text-[#ff8eab]">05 — Contact</Eyebrow>
+            <Eyebrow className="text-[#ff8eab]">06 — Contact</Eyebrow>
             <h2 className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
@@ -287,6 +318,7 @@ export default function Home() {
             {(
               [
                 ["GutRx", links.gutrx],
+                ["Dev site", links.dev],
                 ["Acupuncture SEO", links.acupunctureSeo],
                 ["Green Owl Marketing", links.greenOwl],
                 ["Agent Invoice", links.agentInvoice],

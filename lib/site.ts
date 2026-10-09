@@ -19,10 +19,12 @@ export const links = {
   greenOwlPhoneDisplay: "256-OWL-HUNT",
   greenOwlPhoneHref: "tel:+12566954868",
   agentInvoice: "https://agent-invoice.com",
+  dev: "https://dev.keithclemmons.com",
 } as const;
 
 export const nav = [
   { href: "index.html#work", label: "Work" },
+  { href: "index.html#dev", label: "Dev" },
   { href: "index.html#companies", label: "Companies" },
   { href: "index.html#background", label: "Background" },
   { href: "index.html#clients", label: "Clients" },
