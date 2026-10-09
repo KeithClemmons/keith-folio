@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact-form";
 import { LinkButton } from "@/components/link-button";
 import { StormStage } from "@/components/weather";
-import { links, person, systems, testimonials } from "@/lib/site";
+import { experience, links, person, systems, testimonials, tools } from "@/lib/site";
 
 function Eyebrow({
   children,
@@ -141,8 +141,8 @@ export default function Home() {
                 </div>
                 <div className="md:col-span-8">
                   <p className="max-w-xl text-lg leading-relaxed">
-                    Search marketing for acupuncture clinics. I have owned it
-                    since 2013, and I still run it.
+                    Search marketing for acupuncture clinics. I’ve run it since
+                    2009.
                   </p>
                   <p className="mt-4">
                     <ExternalAnchor href={links.acupunctureSeo}>
@@ -251,16 +251,60 @@ export default function Home() {
             <h2 className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Web design, marketing, and IT since 2009.
             </h2>
-            <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed">
-              <p>
-                I’m based in Atlanta, Georgia, and I’m available for freelance
-                when the project is a fit.
-              </p>
-              <p>
-                Earlier: ATL Computer Repair from 2009 to 2023 (tech support,
-                website design, and SEO) and Google and Bing ads for
-                Acupuncture Atlanta from 2011 to 2021.
-              </p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+              Sixteen years across SEO, paid search, and e-commerce. I’m based
+              in Atlanta, Georgia, and I’m available for freelance when the
+              project is a fit.
+            </p>
+
+            <ol className="mt-10 list-none border-t border-white/15 p-0">
+              {experience.map((job) => (
+                <li
+                  key={job.org}
+                  className="grid gap-3 border-b border-white/15 py-7 md:grid-cols-12 md:gap-10"
+                >
+                  <div className="md:col-span-4">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                      {job.years}
+                    </p>
+                    <h3 className="mt-2 font-serif text-2xl tracking-tight">{job.org}</h3>
+                    <p className="mt-1 text-sm text-[#c5cedd]">{job.role}</p>
+                  </div>
+                  <p className="max-w-xl text-lg leading-relaxed md:col-span-8">
+                    {job.summary}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-12 md:gap-10">
+              <div className="md:col-span-4">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                  Education
+                </p>
+                <p className="mt-2 text-lg leading-relaxed">
+                  B.S., The Evergreen State College, 2003
+                </p>
+                <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                  Certification
+                </p>
+                <p className="mt-2 text-lg leading-relaxed">Google Search Ads</p>
+              </div>
+              <div className="md:col-span-8">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                  Tools
+                </p>
+                <ul className="mt-3 flex list-none flex-wrap gap-2 p-0">
+                  {tools.map((tool) => (
+                    <li
+                      key={tool}
+                      className="border border-white/20 px-3 py-1 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-white"
+                    >
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>

@@ -29,6 +29,51 @@ export const nav = [
   { href: "index.html#contact", label: "Contact" },
 ] as const;
 
+export const experience = [
+  {
+    role: "E-commerce Specialist & Marketing Coordinator",
+    org: "Kings Fine Art & Decor",
+    years: "2024 – 2025",
+    summary:
+      "Built a 30,000-SKU Shopify site, with the structure, templates, schema, and metadata for SEO. Ran social, paid, and email campaigns, set up GA4 and GTM, and built KPI dashboards in Looker Studio.",
+  },
+  {
+    role: "Advertising Manager",
+    org: "Acupuncture Atlanta",
+    years: "2013 – 2022",
+    summary:
+      "Ran paid media for a 22,000+ SKU e-commerce site: campaigns, budgets, ad copy, and custom Google Analytics reports. Increased ROI by 120%.",
+  },
+  {
+    role: "Marketing Consultant",
+    org: "Acupuncture SEO",
+    years: "2009 – now",
+    summary:
+      "SEO, PPC, and email marketing for healthcare and retail clients. Page 1 rankings and a responsive site for Buckhead Acupuncture; gift-certificate e-commerce for The Muscle Relaxers that raised revenue 20%.",
+  },
+  {
+    role: "Earlier work",
+    org: "ATL Computer Repair",
+    years: "2009 – 2023",
+    summary: "Computer repair and support, website design, and SEO.",
+  },
+] as const;
+
+export const tools = [
+  "GA4",
+  "Google Tag Manager",
+  "Looker Studio",
+  "Google Ads",
+  "Bing Ads",
+  "Shopify",
+  "WordPress",
+  "SEMrush",
+  "Ahrefs",
+  "Screaming Frog",
+  "Mailchimp",
+  "n8n",
+] as const;
+
 export const systems = ["Sites", "SEO", "Email", "Content", "AI agents"] as const;
 
 export const testimonials = [
