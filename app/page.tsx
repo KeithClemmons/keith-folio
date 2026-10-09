@@ -45,7 +45,7 @@ export default function Home() {
       <main className="relative z-[1] flex-1">
         <section id="work" tabIndex={-1} className="hero-sky outline-none">
           <StormStage />
-          <div className="relative z-10 mx-auto max-w-6xl px-5 pt-12 pb-14 md:pt-20 md:pb-16">
+          <div className="relative z-10 mx-auto max-w-6xl px-5 pt-10 pb-14 md:pt-12 md:pb-16">
             <Eyebrow>
               01 — The work
               <span aria-hidden="true"> · </span>
@@ -61,8 +61,8 @@ export default function Home() {
               <br />
               and <span className="italic">automation.</span>
             </h1>
-            <div className="mt-8 h-px w-14 bg-[#f21b51]" />
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
+            <div className="mt-6 h-px w-14 bg-[#f21b51]" />
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
               I build websites and the systems around them: sites, SEO, email,
               content, and AI agents that do real work.
             </p>
@@ -78,7 +78,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-6">
               <LinkButton href="index.html#contact" className="w-full px-5 sm:w-auto">
                 Contact
               </LinkButton>

@@ -298,34 +298,43 @@
 }
 
 body {
-  padding-bottom: clamp(11.5rem, 28vh, 17.5rem);
+  padding-bottom: clamp(7.5rem, 17vh, 11.5rem);
 }
 
-.paper-waves {
+.ocean {
   position: fixed;
   z-index: 30;
   right: 0;
   bottom: 0;
   left: 0;
-  height: clamp(11.5rem, 28vh, 17.5rem);
+  height: clamp(7.5rem, 17vh, 11.5rem);
+  overflow: hidden;
   pointer-events: none;
 }
 
-.paper-waves svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+.ocean-floor {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 34%;
+  background: linear-gradient(to bottom, rgba(23, 52, 112, 0), #173470 45%, #132a5c);
 }
 
-.paper-sheet {
-  stroke: rgba(255, 255, 255, 0.28);
-  stroke-width: 3;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 8px 3px rgba(6, 22, 48, 0.45));
+.ocean-wave {
+  position: absolute;
+  left: 0;
+  width: auto;
+  max-width: none;
+  user-select: none;
+  will-change: transform;
+  animation: ocean-drift linear infinite;
 }
 
-.paper-foam {
-  filter: drop-shadow(0 4px 2px rgba(6, 22, 48, 0.28));
+@keyframes ocean-drift {
+  from { transform: translate3d(-100%, 0, 0); }
+  to { transform: translate3d(100vw, 0, 0); }
 }
 
 .slant-panel {
@@ -414,8 +423,13 @@ body {
   .drop,
   .storm-cloud,
   .rise,
-  .cloud-field {
+  .cloud-field,
+  .ocean-wave {
     animation: none !important;
+  }
+  .ocean-wave {
+    left: var(--rest);
+    transform: translateX(-50%);
   }
   .drop {
     display: none;
