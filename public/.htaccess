@@ -1,2 +1,5 @@
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+
+AddType image/png .png
+AddType image/webp .webp

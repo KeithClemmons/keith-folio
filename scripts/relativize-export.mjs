@@ -1,4 +1,4 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, readdir, readFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const outDir = path.resolve("out");
@@ -22,7 +22,16 @@ for (const file of await htmlFiles(outDir)) {
   // Next emits the favicon as /icon?hash in both the <link> and the
   // embedded payload that the client reapplies. A root-absolute path
   // breaks file://. Keep it relative to this HTML file.
-  let text = original.replace(/\/icon\?[A-Za-z0-9]+/g, `${prefix}icon`);
+  // Next writes the share images as extensionless files and points the
+  // tags at /opengraph-image?hash. Apache would not send those as PNGs.
+  // A real og.png file gets image/png from its extension.
+  let text = original
+    .replace(/\/icon\?[A-Za-z0-9]+/g, `${prefix}icon`)
+    .replace(
+      /https:\/\/keithclemmons\.com\/(?:opengraph|twitter)-image\?[A-Za-z0-9]+/g,
+      "https://keithclemmons.com/og.png",
+    )
+    .replace(/\/(?:opengraph|twitter)-image\?[A-Za-z0-9]+/g, `${prefix}og.png`);
   if (depth > 0 && file.endsWith(".html")) {
     text = text
       .replaceAll('href="./_next/', `href="${prefix}_next/`)
@@ -37,3 +46,9 @@ for (const file of await htmlFiles(outDir)) {
     console.log(`relativized ${rel}`);
   }
 }
+
+const shareImage = path.join(outDir, "opengraph-image");
+await copyFile(shareImage, path.join(outDir, "og.png"));
+await unlink(shareImage);
+await unlink(path.join(outDir, "twitter-image")).catch(() => {});
+console.log("wrote og.png");
