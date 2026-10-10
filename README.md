@@ -21,7 +21,7 @@ The dev server listens on port **43123** ([http://localhost:43123](http://localh
 
 Cloudflare serves this site; the older WordPress site keeps running on Hostinger under the same domain.
 
-- A Cloudflare Worker (`worker/index.js`, configured in `wrangler.jsonc`) sits on `keithclemmons.com/*`. Requests that match a file in the static export (`/`, `_next/`, `ocean.js`, `keith.jpg`, and so on) are answered by Cloudflare from the export.
+- A Cloudflare Worker (`worker/index.js`, configured in `wrangler.jsonc`) sits on `keithclemmons.com/*` and `www.keithclemmons.com/*`. Requests that match a file in the static export (`/`, `_next/`, `ocean.js`, `keith.jpg`, and so on) are answered by Cloudflare from the export.
 - Every other request (`/music`, `/wp-admin`, `/contact.php`, and the rest of WordPress) is passed through unchanged to Hostinger.
 - `contact.php` needs PHP, so `public/.assetsignore` keeps it out of the Cloudflare upload. The copy on Hostinger is the one that runs; upload it there by hand when it changes. The mailbox `keith@keithclemmons.com` needs to exist on that hosting account.
 - The build ships no `robots.txt` or `sitemap.xml`, so WordPress keeps its own. Its sitemap stays at `/wp-sitemap.xml`.

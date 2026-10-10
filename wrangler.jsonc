@@ -15,7 +15,9 @@
   },
   "workers_dev": true,
   "preview_urls": true,
-  "observability": { "enabled": true }
-  // After the workers.dev preview checks out, attach the real domain by adding:
-  // "routes": [{ "pattern": "keithclemmons.com/*", "zone_name": "keithclemmons.com" }]
+  "observability": { "enabled": true },
+  "routes": [
+    { "pattern": "keithclemmons.com/*", "zone_name": "keithclemmons.com" },
+    { "pattern": "www.keithclemmons.com/*", "zone_name": "keithclemmons.com" }
+  ]
 }
