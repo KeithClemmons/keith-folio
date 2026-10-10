@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTheme } from "@/lib/theme";
 
 gsap.registerPlugin(useGSAP);
 
@@ -10,9 +11,9 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 const CLOUD_W = 240;
 const CLOUD_H = 110;
 
-// Back-to-front paper stock for each cloud stack.
-const SKY_STOCK = ["#2b3a5c", "#34466d", "#405380"];
-const STORM_STOCK = ["#463f6c", "#4a5c89", "#6a7eac", "#a3b3d6"];
+// Back-to-front paper stock for each cloud stack, as theme colors from globals.css.
+const SKY_STOCK = ["var(--sky-cloud-0)", "var(--sky-cloud-1)", "var(--sky-cloud-2)"];
+const STORM_STOCK = ["var(--hero-cloud-0)", "var(--hero-cloud-1)", "var(--hero-cloud-2)", "var(--hero-cloud-3)"];
 const BOLT_STOCK = ["#f21b51", "#ffcf6b", "#fff7e3"];
 
 const drops = Array.from({ length: 42 }, (_, index) => ({
@@ -79,7 +80,7 @@ function PaperCloud({
     <div className={`paper-cloud ${className}`}>
       <svg viewBox={box} className="paper-cloud-art">
         {layers.map((d, k) => (
-          <path key={k} d={d} fill={stock[k]} filter="url(#paper-cut)" />
+          <path key={k} d={d} style={{ fill: stock[k] }} filter="url(#paper-cut)" />
         ))}
       </svg>
       {/* Separate unfiltered sheet so flashes never re-rasterize the paper filter. */}
@@ -199,8 +200,70 @@ function litNear(x: number, y: number, radius: number, peak: number) {
   return { sheets, levels };
 }
 
+const RAYS = Array.from({ length: 12 }, (_, i) => i * 30);
+
+// Layered cut-paper sun. Each ring is its own <svg> so GSAP can spin it as a whole
+// layer without re-rasterizing the paper filter every frame.
+function PaperSun() {
+  return (
+    <div className="sun day-only">
+      <svg viewBox="-100 -100 200 200" className="sun-rays sun-rays-outer">
+        {RAYS.map((angle) => (
+          <polygon key={angle} points="-10,-60 10,-60 0,-97" transform={`rotate(${angle})`} fill="#ffd36e" filter="url(#paper-cut)" />
+        ))}
+      </svg>
+      <svg viewBox="-100 -100 200 200" className="sun-rays sun-rays-inner">
+        {RAYS.map((angle) => (
+          <polygon key={angle} points="-8,-54 8,-54 0,-80" transform={`rotate(${angle + 15})`} fill="#ffb547" filter="url(#paper-cut)" />
+        ))}
+      </svg>
+      <svg viewBox="-100 -100 200 200" className="sun-disc">
+        <circle r="58" fill="#ffaa1f" filter="url(#paper-cut)" />
+        <circle r="49" fill="#ffc642" filter="url(#paper-cut)" />
+        <circle r="38" cx="-5" cy="-5" fill="#ffe08f" filter="url(#paper-cut)" />
+      </svg>
+    </div>
+  );
+}
+
+const GULL = "M-18 -3 Q-9 -10 0 0 Q9 -10 18 -3 Q9 -5 0 4 Q-9 -5 -18 -3Z";
+
+// A small flock of paper gulls glides across the day sky now and then.
+function launchFlock(layer: HTMLElement) {
+  const random = gsap.utils.random;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const flock = document.createElement("div");
+  flock.className = "flock";
+  const count = Math.round(random(2, 5));
+  for (let i = 0; i < count; i++) {
+    const svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttribute("viewBox", "-20 -12 40 24");
+    svg.setAttribute("class", "gull");
+    const body = document.createElementNS(SVG_NS, "path");
+    body.setAttribute("d", GULL);
+    body.setAttribute("filter", "url(#paper-cut)");
+    svg.appendChild(body);
+    const size = random(22, 38);
+    svg.style.width = `${size}px`;
+    svg.style.left = `${i * random(28, 46)}px`;
+    svg.style.top = `${(i % 2 ? 1 : -1) * i * random(6, 14)}px`;
+    flock.appendChild(svg);
+    gsap.fromTo(svg, { scaleY: 1 }, { scaleY: 0.35, duration: random(0.22, 0.34), yoyo: true, repeat: -1, ease: "sine.inOut", delay: random(0, 0.3) });
+  }
+  layer.appendChild(flock);
+  const leftward = Math.random() < 0.5;
+  const y = random(0.08, 0.42) * h;
+  const from = leftward ? w + 60 : -260;
+  const to = leftward ? -260 : w + 60;
+  gsap.set(flock, { x: from, y, scaleX: leftward ? -1 : 1 });
+  gsap.to(flock, { x: to, duration: random(16, 26), ease: "none", onComplete: () => flock.remove() });
+  gsap.to(flock, { y: y + random(-40, 40), duration: random(3, 5), yoyo: true, repeat: -1, ease: "sine.inOut" });
+}
+
 export function Atmosphere() {
   const root = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
 
   useGSAP(
     () => {
@@ -212,6 +275,19 @@ export function Atmosphere() {
         const bolts = root.current!.querySelector<HTMLElement>(".bolt-layer")!;
 
         gsap.utils.toArray<Element>(".paper-cloud").forEach(drift);
+
+        if (theme === "light") {
+          const birds = root.current!.querySelector<HTMLElement>(".bird-layer")!;
+          gsap.to(".sun-rays-outer", { rotation: 360, duration: 140, ease: "none", repeat: -1 });
+          gsap.to(".sun-rays-inner", { rotation: -360, duration: 100, ease: "none", repeat: -1 });
+          gsap.to(".sun-disc", { scale: 1.04, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1 });
+          const flock = () => {
+            launchFlock(birds);
+            gsap.delayedCall(random(9, 18), flock);
+          };
+          gsap.delayedCall(2.5, flock);
+          return () => birds.replaceChildren();
+        }
 
         // Heat lightning: distant, soft pulses that backlight the paper clouds.
         const heat = () => {
@@ -300,7 +376,7 @@ export function Atmosphere() {
         return () => bolts.replaceChildren();
       });
     },
-    { scope: root },
+    { scope: root, dependencies: [theme], revertOnUpdate: true },
   );
 
   return (
@@ -325,6 +401,39 @@ export function Atmosphere() {
               />
               <feComposite in="grain" in2="SourceAlpha" operator="in" result="speck" />
               <feDropShadow
+              className="paper-shadow"
+                in="SourceGraphic"
+                dx="-1.5"
+                dy="3"
+                stdDeviation="2.4"
+                floodColor="#040e24"
+                floodOpacity="0.45"
+                result="lifted"
+              />
+              <feMerge>
+                <feMergeNode in="lifted" />
+                <feMergeNode in="speck" />
+              </feMerge>
+            </filter>
+            {/* Daylight variant: the same cut-paper shadow with a finer, fainter grain for white stock. */}
+            <filter
+              id="paper-cut-day"
+              x="-15%"
+              y="-15%"
+              width="130%"
+              height="140%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7" result="noise" />
+              <feColorMatrix
+                in="noise"
+                type="matrix"
+                values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.22 0 0 0 0.13"
+                result="grain"
+              />
+              <feComposite in="grain" in2="SourceAlpha" operator="in" result="speck" />
+              <feDropShadow
+              className="paper-shadow"
                 in="SourceGraphic"
                 dx="-1.5"
                 dy="3"
@@ -346,9 +455,11 @@ export function Atmosphere() {
           </defs>
         </svg>
 
-        <div className="sky-flash" />
-        <div className="heat-glow" />
-        <div className="bolt-layer" />
+        <PaperSun />
+        <div className="sky-flash night-only" />
+        <div className="heat-glow night-only" />
+        <div className="bolt-layer night-only" />
+        <div className="bird-layer day-only" />
 
         <div className="cloud-field">
           <PaperCloud seed={11} stock={SKY_STOCK} className="cloud cloud-a" />
@@ -359,7 +470,7 @@ export function Atmosphere() {
       </div>
 
       {/* Outside the atmosphere so it falls in front of the frosted section panels, down to the waves. */}
-      <div className="rain" aria-hidden="true">
+      <div className="rain night-only" aria-hidden="true">
         {drops.map((drop, index) => (
           <span
             key={index}

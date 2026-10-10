@@ -7,6 +7,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent-ink: var(--accent-ink);
+  --color-page: var(--page);
+  --color-field: var(--field);
+  --color-field-line: var(--field-line);
   --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
@@ -83,6 +91,78 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Site theme: the stormy night. data-theme="light" swaps in the sunny day below. */
+  --ink: #ffffff;
+  --ink-soft: #c5cedd;
+  --line: rgba(255, 255, 255, 0.15);
+  --line-strong: rgba(255, 255, 255, 0.2);
+  --accent-ink: #ff8eab;
+  --page: #202c45;
+  --field: #2a3858;
+  --field-line: #3d4e70;
+  --sky: none;
+  --header-bg: rgba(32, 44, 69, 0.92);
+  --sheet: linear-gradient(#25334f, #212d47);
+  --sheet-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --sheet-shadow: rgba(4, 12, 28, 0.5);
+  --panel-alt: rgba(255, 255, 255, 0.06);
+  --card-tint: rgba(255, 255, 255, 0.04);
+  --card-hover: rgba(242, 27, 81, 0.1);
+  --hero-shade: #1a2540;
+  --sky-cloud-0: #2b3a5c;
+  --sky-cloud-1: #34466d;
+  --sky-cloud-2: #405380;
+  --hero-cloud-0: #463f6c;
+  --hero-cloud-1: #4a5c89;
+  --hero-cloud-2: #6a7eac;
+  --hero-cloud-3: #a3b3d6;
+  --paper-shadow: #040e24;
+  --paper-shadow-alpha: 0.45;
+  --gull: #34425f;
+}
+
+:root[data-theme="light"] {
+  --background: #cfe9f6;
+  --foreground: #1d2a44;
+  --card: #ffffff;
+  --card-foreground: #1d2a44;
+  --popover: #fbf7ee;
+  --popover-foreground: #1d2a44;
+  --secondary: #eef3f9;
+  --secondary-foreground: #1d2a44;
+  --muted: #eef3f9;
+  --muted-foreground: #4b5a78;
+  --border: #c9d3e3;
+  --input: #c9d3e3;
+
+  --ink: #1d2a44;
+  --ink-soft: #4b5a78;
+  --line: rgba(29, 42, 68, 0.16);
+  --line-strong: rgba(29, 42, 68, 0.24);
+  --accent-ink: #c4113f;
+  --page: #fbf7ee;
+  --field: #ffffff;
+  --field-line: #c9d3e3;
+  --sky: linear-gradient(180deg, #74c1ea 0%, #a9dcf3 38%, #d9f0f8 70%, #fbf3e1 100%);
+  --header-bg: rgba(251, 247, 238, 0.9);
+  --sheet: linear-gradient(#fffaf1, #f6eedf);
+  --sheet-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --sheet-shadow: rgba(40, 70, 110, 0.22);
+  --panel-alt: rgba(255, 255, 255, 0.55);
+  --card-tint: rgba(255, 255, 255, 0.5);
+  --card-hover: rgba(242, 27, 81, 0.08);
+  --hero-shade: #f3eee3;
+  --sky-cloud-0: #c4e1f2;
+  --sky-cloud-1: #dcedf8;
+  --sky-cloud-2: #f3f9fd;
+  --hero-cloud-0: #b3d4ea;
+  --hero-cloud-1: #cfe4f3;
+  --hero-cloud-2: #e9f3fa;
+  --hero-cloud-3: #ffffff;
+  --paper-shadow: #3b6a95;
+  --paper-shadow-alpha: 0.32;
+  --gull: #3d4c6b;
 }
 
 .dark {
@@ -132,6 +212,9 @@
     scroll-behavior: smooth;
     overflow-x: clip;
   }
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
   ::selection {
     background: #f21b51;
     color: #ffffff;
@@ -174,6 +257,13 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background: var(--sky);
+}
+
+/* Each scene's pieces only show in its own theme. */
+:root[data-theme="light"] .night-only,
+:root:not([data-theme="light"]) .day-only {
+  display: none;
 }
 
 .svg-defs {
@@ -261,9 +351,61 @@
   will-change: opacity, transform;
 }
 
-.bolt-layer {
+.bolt-layer,
+.bird-layer {
   position: absolute;
   inset: 0;
+}
+
+/* White paper shows grain far more than navy, so daylight swaps in a fainter filter. */
+:root[data-theme="light"] [filter="url(#paper-cut)"] {
+  filter: url(#paper-cut-day);
+}
+
+/* Shared cut-paper shadow; softer and bluer under the daylight. */
+.paper-shadow {
+  flood-color: var(--paper-shadow);
+  flood-opacity: var(--paper-shadow-alpha);
+}
+
+/* In the open sky between the headline and the portrait. */
+.sun {
+  position: absolute;
+  top: 4vh;
+  right: 27vw;
+  width: min(21vw, 230px);
+  aspect-ratio: 1;
+}
+
+.sun > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  .sun {
+    top: 9vh;
+    right: -8vw;
+    width: 46vw;
+  }
+}
+
+.flock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.gull {
+  position: absolute;
+  overflow: visible;
+  fill: var(--gull);
+  will-change: transform;
 }
 
 .bolt {
@@ -335,7 +477,7 @@
   z-index: 20;
   inset: 0;
   opacity: 0;
-  background: #1a2540;
+  background: var(--hero-shade);
   pointer-events: none;
 }
 
@@ -436,22 +578,20 @@ body {
   left: 0;
   height: 4rem;
   clip-path: polygon(0 2.4rem, 100% 0, 100% 1.6rem, 0 4rem);
-  background: linear-gradient(to top, rgba(4, 12, 28, 0.5), rgba(4, 12, 28, 0));
+  background: linear-gradient(to top, var(--sheet-shadow), transparent);
 }
 
 .slant-panel::after {
   inset: 0;
   clip-path: polygon(0 2.4rem, 100% 0, 100% calc(100% - 1.8rem), 0 100%);
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    linear-gradient(#25334f, #212d47);
+  background: var(--sheet-grain), var(--sheet);
 }
 
 .slant-panel-alt {
   position: relative;
   z-index: 1;
   clip-path: polygon(0 0, 100% 2rem, 100% 100%, 0 calc(100% - 2rem));
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--panel-alt);
   backdrop-filter: blur(8px);
 }
 
@@ -470,7 +610,7 @@ body {
 .tilt-card {
   transform-style: preserve-3d;
   transition: transform 0.45s ease, background 0.45s ease;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card-tint);
   padding-inline: 1rem;
 }
 
@@ -480,7 +620,7 @@ body {
   }
   .tilt-card:hover {
     transform: perspective(900px) rotateX(7deg) rotateY(-8deg) translateZ(10px);
-    background: rgba(242, 27, 81, 0.1);
+    background: var(--card-hover);
   }
 }
 
@@ -521,4 +661,9 @@ body {
   .tilt-card:hover {
     transform: none;
   }
+}
+
+/* The white script logo reads as dark ink on the light theme. */
+:root[data-theme="light"] .site-logo {
+  filter: brightness(0) opacity(0.85);
 }

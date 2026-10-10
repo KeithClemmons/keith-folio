@@ -8,7 +8,11 @@
 
   var motion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
   var TAU = Math.PI * 2;
-  var NAVY = [27, 38, 64];
+  // Distant waves fade toward the sky: night navy, or pale blue on the light theme.
+  var NIGHT = [27, 38, 64];
+  var DAY = [200, 230, 246];
+  var haze = NIGHT;
+  var shade = "4, 16, 42";
 
   var BODY = ["#94d5ee", "#53b5e4", "#2d8ed8", "#2768c6", "#1f4ea3", "#183b80"];
   var LIP = ["#f6f3ec", "#aadff2", "#5cb9e5", "#2f88d4", "#2459b6"];
@@ -35,18 +39,27 @@
     var c = hexToRgb(hex);
     return (
       "rgb(" +
-      Math.round(c[0] + (NAVY[0] - c[0]) * amount) + "," +
-      Math.round(c[1] + (NAVY[1] - c[1]) * amount) + "," +
-      Math.round(c[2] + (NAVY[2] - c[2]) * amount) + ")"
+      Math.round(c[0] + (haze[0] - c[0]) * amount) + "," +
+      Math.round(c[1] + (haze[1] - c[1]) * amount) + "," +
+      Math.round(c[2] + (haze[2] - c[2]) * amount) + ")"
     );
   }
 
-  var palettes = LAYERS.map(function (layer) {
-    return {
-      body: BODY.map(function (c) { return toned(c, layer.tone); }),
-      lip: LIP.map(function (c) { return toned(c, layer.tone * 0.9); }),
-    };
-  });
+  var palettes = [];
+
+  function tint() {
+    var day = document.documentElement.dataset.theme === "light";
+    haze = day ? DAY : NIGHT;
+    shade = day ? "30, 74, 116" : "4, 16, 42";
+    var depth = day ? 0.7 : 1;
+    palettes = LAYERS.map(function (layer) {
+      return {
+        body: BODY.map(function (c) { return toned(c, layer.tone * depth); }),
+        lip: LIP.map(function (c) { return toned(c, layer.tone * depth * 0.9); }),
+      };
+    });
+    for (var i = 0; i < layers.length; i++) layers[i].palette = palettes[i];
+  }
 
   var grain = (function () {
     var size = 160;
@@ -134,10 +147,10 @@
   function paperFill(color, depth) {
     ctx.save();
     ctx.translate(-depth * 0.35, depth * 0.55);
-    ctx.fillStyle = "rgba(4, 16, 42, 0.16)";
+    ctx.fillStyle = "rgba(" + shade + ", 0.16)";
     ctx.fill(path);
     ctx.translate(depth * 0.15, -depth * 0.3);
-    ctx.fillStyle = "rgba(4, 16, 42, 0.24)";
+    ctx.fillStyle = "rgba(" + shade + ", 0.24)";
     ctx.fill(path);
     ctx.restore();
     ctx.fillStyle = color;
@@ -394,6 +407,14 @@
   });
   if (motion && motion.addEventListener) motion.addEventListener("change", start);
 
+  if (window.MutationObserver) {
+    new MutationObserver(function () {
+      tint();
+      if (motion && motion.matches) render(4, 0);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  }
+
+  tint();
   resize();
   start();
 })();

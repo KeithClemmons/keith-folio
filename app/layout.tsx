@@ -6,6 +6,7 @@ import { Fraunces, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/fo
 import { Header } from "@/components/header";
 import { Atmosphere } from "@/components/weather";
 import { description, links, person } from "@/lib/site";
+import { themeScript } from "@/lib/theme-script";
 import "./globals.css";
 
 // Content hash so browsers fetch the new wave script whenever it changes.
@@ -68,7 +69,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#202c45",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbf7ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#202c45" },
+  ],
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -117,12 +121,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${instrumentSans.variable} ${instrumentSerif.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      // The head script sets data-theme before React loads.
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <Atmosphere />
         <a
           href="index.html#work"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[#202c45] focus:px-3 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-page focus:px-3 focus:py-2 focus:text-ink"
         >
           Skip to content
         </a>

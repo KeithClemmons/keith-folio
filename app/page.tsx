@@ -6,7 +6,7 @@ import { experience, links, nav, person, systems, testimonials, tools } from "@/
 
 function Eyebrow({
   children,
-  className = "text-[#ff8eab]",
+  className = "text-accent-ink",
   ...rest
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
@@ -31,7 +31,7 @@ function ExternalAnchor({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
+      className="font-medium text-accent-ink underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-ink"
     >
       {children}
       <span className="sr-only"> (opens in a new tab)</span>
@@ -52,7 +52,7 @@ export default function Home() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <Eyebrow>{person.location}</Eyebrow>
-                  <p className="mt-4 font-serif text-2xl tracking-tight text-white">
+                  <p className="mt-4 font-serif text-2xl tracking-tight text-ink">
                     {person.name}
                   </p>
                 </div>
@@ -60,7 +60,7 @@ export default function Home() {
                   <img src="keith.jpg" alt="Jason “Keith” Clemmons" width={960} height={1206} />
                 </figure>
               </div>
-              <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[1.02] tracking-[-0.035em] text-white">
+              <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.45rem,5.8vw,5.35rem)] leading-[1.02] tracking-[-0.035em] text-ink">
                 Web development,
                 <br />
                 AI systems,
@@ -70,12 +70,12 @@ export default function Home() {
                 and <span className="italic">automation.</span>
               </h1>
               <div className="mt-6 h-px w-14 bg-[#f21b51]" />
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink md:text-xl md:leading-relaxed">
                 I build websites and the systems around them:
                 <br />
                 IT, Code, Content, SEO, and AI Systems that do real work.
               </p>
-              <ul className="slash-ribbon mt-6 list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+              <ul className="slash-ribbon mt-6 list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                 {systems.map((item, index) => (
                   <li key={item} className="flex items-center gap-2">
                     {index > 0 ? (
@@ -111,14 +111,14 @@ export default function Home() {
                 I’m the lead developer at GutRx, and I own three businesses.
               </p>
 
-              <div className="tilt-deck mt-10 border-t border-white/15">
+              <div className="tilt-deck mt-10 border-t border-line">
                 <article
                   id="gutrx"
                   data-reveal="deal"
-                  className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10"
+                  className="tilt-card grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-10 md:py-10"
                 >
                   <div className="md:col-span-4">
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                       Lead developer
                     </p>
                     <h3 className="mt-2 font-serif text-3xl tracking-tight">GutRx</h3>
@@ -138,9 +138,9 @@ export default function Home() {
                   </div>
                 </article>
 
-                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-10 md:py-10">
                   <div className="md:col-span-4">
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                       Owner<span aria-hidden="true"> · </span>Search marketing
                     </p>
                     <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -160,9 +160,9 @@ export default function Home() {
                   </div>
                 </article>
 
-                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-10 md:py-10">
                   <div className="md:col-span-4">
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                       Owner<span aria-hidden="true"> · </span>Marketing studio
                     </p>
                     <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -177,7 +177,7 @@ export default function Home() {
                       studio phone line is{" "}
                       <a
                         href={links.greenOwlPhoneHref}
-                        className="font-medium text-[#ff8eab] underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-white"
+                        className="font-medium text-accent-ink underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-ink"
                       >
                         {links.greenOwlPhoneDisplay}
                       </a>
@@ -191,9 +191,9 @@ export default function Home() {
                   </div>
                 </article>
 
-                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-white/15 py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                <article data-reveal="deal" className="tilt-card grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-10 md:py-10">
                   <div className="md:col-span-4">
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                       Owner<span aria-hidden="true"> · </span>Invoicing software
                     </p>
                     <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -229,9 +229,9 @@ export default function Home() {
             <h2 data-reveal="rise" className="mt-3 max-w-3xl font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               Apps, code, and dev stuff.
             </h2>
-            <div data-reveal="deal" className="mt-10 grid gap-4 border-t border-white/15 pt-8 md:grid-cols-12 md:gap-10 md:pt-10">
+            <div data-reveal="deal" className="mt-10 grid gap-4 border-t border-line pt-8 md:grid-cols-12 md:gap-10 md:pt-10">
               <div className="md:col-span-4">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                   Dev site
                 </p>
                 <h3 className="mt-2 font-serif text-3xl tracking-tight">
@@ -266,19 +266,19 @@ export default function Home() {
               project is a fit.
             </p>
 
-            <ol className="mt-10 list-none border-t border-white/15 p-0">
+            <ol className="mt-10 list-none border-t border-line p-0">
               {experience.map((job) => (
                 <li
                   key={job.org}
                   data-reveal="slide"
-                  className="grid gap-3 border-b border-white/15 py-7 md:grid-cols-12 md:gap-10"
+                  className="grid gap-3 border-b border-line py-7 md:grid-cols-12 md:gap-10"
                 >
                   <div className="md:col-span-4">
-                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                       {job.years}
                     </p>
                     <h3 className="mt-2 font-serif text-2xl tracking-tight">{job.org}</h3>
-                    <p className="mt-1 text-sm text-[#c5cedd]">{job.role}</p>
+                    <p className="mt-1 text-sm text-ink-soft">{job.role}</p>
                   </div>
                   <p className="max-w-xl text-lg leading-relaxed md:col-span-8">
                     {job.summary}
@@ -289,19 +289,19 @@ export default function Home() {
 
             <div data-reveal="rise" className="mt-10 grid gap-6 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-4">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                   Education
                 </p>
                 <p className="mt-2 text-lg leading-relaxed">
                   B.S., The Evergreen State College, 2003
                 </p>
-                <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                   Certification
                 </p>
                 <p className="mt-2 text-lg leading-relaxed">Google Search Ads</p>
               </div>
               <div className="md:col-span-8">
-                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
+                <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
                   Tools
                 </p>
                 <ul className="mt-3 flex list-none flex-wrap gap-2 p-0">
@@ -309,7 +309,7 @@ export default function Home() {
                     <li
                       key={tool}
                       data-reveal="tag"
-                      className="border border-white/20 px-3 py-1 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-white"
+                      className="border border-line-strong px-3 py-1 font-mono text-[0.72rem] uppercase tracking-[0.1em] text-ink"
                     >
                       {tool}
                     </li>
@@ -326,20 +326,20 @@ export default function Home() {
             <h2 data-reveal="rise" className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               What clients have said.
             </h2>
-            <div className="mt-8 border-t border-white/15">
+            <div className="mt-8 border-t border-line">
               {testimonials.map((item) => (
                 <figure
                   key={item.name}
                   data-reveal="quote"
-                  className="border-b border-white/15 py-8 md:py-10"
+                  className="border-b border-line py-8 md:py-10"
                 >
                   <blockquote>
-                    <p className="pull-quote max-w-3xl font-serif text-[1.35rem] leading-snug tracking-[-0.02em] text-white md:text-[1.7rem] md:leading-snug">
+                    <p className="pull-quote max-w-3xl font-serif text-[1.35rem] leading-snug tracking-[-0.02em] text-ink md:text-[1.7rem] md:leading-snug">
                       {item.quote}
                     </p>
                   </blockquote>
-                  <figcaption className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[#c5cedd]">
-                    <span className="text-white">{item.name}</span>
+                  <figcaption className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-ink-soft">
+                    <span className="text-ink">{item.name}</span>
                     <span aria-hidden="true"> · </span>
                     <span>{item.role}</span>
                   </figcaption>
@@ -349,13 +349,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-[#202c45] text-white">
+        <section id="contact" className="bg-page text-ink">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-            <Eyebrow data-reveal="rise" className="text-[#ff8eab]">05 — Contact</Eyebrow>
+            <Eyebrow data-reveal="rise" className="text-accent-ink">05 — Contact</Eyebrow>
             <h2 data-reveal="rise" className="mt-3 font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.05] tracking-[-0.03em]">
               {person.locationShort}
             </h2>
-            <p data-reveal="rise" className="mt-6 max-w-md text-lg leading-relaxed text-[#c5cedd]">
+            <p data-reveal="rise" className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
               Available for freelance when the project is a fit.
             </p>
             <ContactForm />
@@ -363,14 +363,14 @@ export default function Home() {
         </section>
       </main>
       <ScrollEffects />
-      <footer className="relative z-[1] bg-[#202c45] text-[#c5cedd]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-white/15 px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-sm sm:flex-row sm:items-center sm:justify-between">
+      <footer className="relative z-[1] bg-page text-ink-soft">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-line px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {person.name}</p>
           <ul className="flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
             {nav.map((item) => (
               <li key={item.href}>
                 <a
-                  className="underline decoration-[#f21b51] underline-offset-4 hover:text-white"
+                  className="underline decoration-[#f21b51] underline-offset-4 hover:text-ink"
                   href={item.href}
                 >
                   {item.label}

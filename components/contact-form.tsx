@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 
 const fieldClass =
-  "mt-2 w-full rounded-lg border border-[#3d4e70] bg-[#2a3858] px-3 py-2.5 text-base text-white outline-none placeholder:text-[#c5cedd]/70 focus-visible:border-[#f21b51] focus-visible:ring-3 focus-visible:ring-[#f21b51]/40";
+  "mt-2 w-full rounded-lg border border-field-line bg-field px-3 py-2.5 text-base text-ink outline-none placeholder:text-ink-soft/70 focus-visible:border-[#f21b51] focus-visible:ring-3 focus-visible:ring-[#f21b51]/40";
 
 export function ContactForm() {
   return (
     <form action="contact.php" method="post" className="mt-8 max-w-xl">
-      <p className="text-lg leading-relaxed text-[#c5cedd]">
+      <p className="text-lg leading-relaxed text-ink-soft">
         Send a note. I’ll reply by email.
       </p>
       <div className="sr-only" aria-hidden="true">
@@ -16,7 +16,7 @@ export function ContactForm() {
         </label>
       </div>
       <div className="mt-5">
-        <label htmlFor="contact-name" className="text-sm text-white">
+        <label htmlFor="contact-name" className="text-sm text-ink">
           Name
         </label>
         <input
@@ -30,7 +30,7 @@ export function ContactForm() {
         />
       </div>
       <div className="mt-4">
-        <label htmlFor="contact-email" className="text-sm text-white">
+        <label htmlFor="contact-email" className="text-sm text-ink">
           Email
         </label>
         <input
@@ -44,7 +44,7 @@ export function ContactForm() {
         />
       </div>
       <div className="mt-4">
-        <label htmlFor="contact-message" className="text-sm text-white">
+        <label htmlFor="contact-message" className="text-sm text-ink">
           Message
         </label>
         <textarea
