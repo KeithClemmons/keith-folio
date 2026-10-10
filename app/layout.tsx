@@ -1,9 +1,18 @@
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { Header } from "@/components/header";
 import { Atmosphere } from "@/components/weather";
 import { description, links, person } from "@/lib/site";
 import "./globals.css";
+
+// Content hash so browsers fetch the new wave script whenever it changes.
+const oceanVersion = createHash("sha256")
+  .update(readFileSync(join(process.cwd(), "public", "ocean.js")))
+  .digest("hex")
+  .slice(0, 10);
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -120,7 +129,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <canvas className="ocean-canvas" aria-hidden="true" />
-        <script src="ocean.js" defer />
+        <script src={`ocean.js?v=${oceanVersion}`} defer />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

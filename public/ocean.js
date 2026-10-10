@@ -147,19 +147,22 @@
     ctx.stroke(path);
   }
 
-  function drawSheet(layer, time, front) {
+  function sheetY(layer, time, front, k, x) {
     var cfg = layer.config;
     var baseY = cfg.base * height;
     var amp = cfg.height * height * 0.07;
     var drift = time * cfg.speed * 0.02;
+    var y0 = front ? baseY + cfg.height * height * 0.16 + k * amp * 1.3 : baseY - amp * 1.6 + k * amp * 1.1;
+    return y0 + Math.sin(x * 0.011 - drift * (1 + k * 0.2) + k) * amp + Math.sin(x * 0.027 - drift * 1.7 + k * 2) * amp * 0.45;
+  }
+
+  function drawSheet(layer, time, front) {
     var colors = front ? [layer.palette.body[2], layer.palette.body[4]] : [layer.palette.body[1], layer.palette.body[3]];
     for (var k = 0; k < colors.length; k++) {
-      var y0 = front ? baseY + cfg.height * height * 0.16 + k * amp * 1.3 : baseY - amp * 1.6 + k * amp * 1.1;
       begin();
       path.moveTo(-10, height + 10);
       for (var x = -10; x <= width + 10; x += 14) {
-        var y = y0 + Math.sin(x * 0.011 - drift * (1 + k * 0.2) + k) * amp + Math.sin(x * 0.027 - drift * 1.7 + k * 2) * amp * 0.45;
-        path.lineTo(x, y);
+        path.lineTo(x, sheetY(layer, time, front, k, x));
       }
       path.lineTo(width + 10, height + 10);
       path.closePath();
@@ -237,6 +240,87 @@
     }
   }
 
+  // Paper sailboat floating on the third layer's swell, drawn just before that layer so its keel sits in the water.
+  var WOOD = ["#4e2c18", "#7c4a2a", "#a8723f"];
+  var boat = { tilt: 0 };
+  var flash = 0;
+  window.addEventListener("storm:flash", function (event) {
+    flash = Math.max(flash, (event.detail && event.detail.strength) || 0.5);
+  });
+
+  function hullX(y, bow) {
+    return bow ? 34 - (12 * (y + 9)) / 17 : -30 + (6 * (y + 8)) / 16;
+  }
+
+  function band(top, bottom) {
+    begin();
+    path.moveTo(hullX(top, false), top);
+    path.quadraticCurveTo(2, top + 1.5, hullX(top, true), top - 0.5);
+    path.lineTo(hullX(bottom, true), bottom);
+    path.quadraticCurveTo(2, bottom + 2.5, hullX(bottom, false), bottom);
+    path.closePath();
+  }
+
+  function lit(color) {
+    paperFill(color, 3);
+    if (flash > 0.01) {
+      ctx.fillStyle = "rgba(255, 246, 250, " + (flash * 0.65).toFixed(3) + ")";
+      ctx.fill(path);
+    }
+  }
+
+  function drawBoat(layer, time, dt) {
+    var u = (height / 118) * 1.3;
+    var x = width * (width < 640 ? 0.84 : 0.8) + Math.sin(time * 0.23) * 10 * u;
+    var reach = 26 * u;
+    var yl = sheetY(layer, time, false, 0, x - reach);
+    var yr = sheetY(layer, time, false, 0, x + reach);
+    var y = (yl + yr) / 2 + (2 + Math.sin(time * 1.3) * 1.2) * u;
+    var target = Math.atan2(yr - yl, reach * 2) * 2.4 + Math.sin(time * 0.9 + 1) * 0.06;
+    boat.tilt += (target - boat.tilt) * Math.min(1, dt * 3 || 1);
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(boat.tilt);
+    ctx.scale(u, u);
+
+    begin();
+    path.rect(1.2, -57, 1.8, 50);
+    paperFill(WOOD[1], 2);
+
+    var belly = Math.sin(time * 1.1) * 1.2;
+    begin();
+    path.moveTo(4, -55);
+    path.quadraticCurveTo(14 + belly, -32, 29, -11);
+    path.lineTo(4.5, -11);
+    path.closePath();
+    lit("#e8ddc6");
+
+    begin();
+    path.moveTo(0.5, -54);
+    path.quadraticCurveTo(-13 - belly, -30, -25, -12);
+    path.lineTo(0.5, -12);
+    path.closePath();
+    lit("#f6efe0");
+
+    var wave = Math.sin(time * 6) * 1.6;
+    begin();
+    path.moveTo(2.2, -57);
+    path.quadraticCurveTo(8, -58.5 + wave, 13, -58 + wave * 1.4);
+    path.quadraticCurveTo(8, -60 + wave, 2.2, -61.5);
+    path.closePath();
+    paperFill("#f21b51", 2);
+
+    band(-9, 9);
+    paperFill(WOOD[0], 4);
+    band(-9, 0);
+    paperFill(WOOD[1], 3);
+    band(-9.5, -5.5);
+    paperFill(WOOD[2], 2);
+
+    ctx.restore();
+  }
+
   var boost = 0;
   var lastScroll = window.scrollY || 0;
   window.addEventListener(
@@ -267,6 +351,7 @@
       var order = layer.crests.slice().sort(function (a, b) { return a.lift - b.lift; });
       for (var o = 0; o < order.length; o++) drawCrest(layer, order[o], time);
       drawSheet(layer, time, true);
+      if (l === 1) drawBoat(layers[2], time, dt);
     }
     ctx.globalCompositeOperation = "source-atop";
     ctx.globalAlpha = 0.07;
@@ -284,6 +369,7 @@
     last = now;
     clock += dt;
     boost *= Math.pow(0.12, dt);
+    flash *= Math.pow(0.02, dt);
     render(clock, dt);
     frame = requestAnimationFrame(tick);
   }

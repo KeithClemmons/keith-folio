@@ -187,61 +187,115 @@
 
 .cloud {
   position: absolute;
-  opacity: 0.55;
-  animation: cloud-drift linear infinite;
 }
 
 .cloud-a {
   top: 6%;
   left: -8%;
   width: min(46vw, 420px);
-  animation-duration: 46s;
 }
 .cloud-b {
   top: 22%;
   right: -12%;
   width: min(38vw, 340px);
-  opacity: 0.35;
-  animation-duration: 62s;
-  animation-direction: reverse;
 }
 .cloud-c {
   top: 58%;
   left: -14%;
   width: min(42vw, 380px);
-  opacity: 0.28;
-  animation-duration: 54s;
+  opacity: 0.8;
 }
 .cloud-d {
   bottom: 8%;
   right: -6%;
   width: min(34vw, 300px);
-  opacity: 0.4;
-  animation-duration: 70s;
-  animation-direction: reverse;
+  opacity: 0.85;
 }
 
-@keyframes cloud-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(12vw, -2vh, 0); }
+.paper-cloud {
+  aspect-ratio: 240 / 110;
+  will-change: transform;
+}
+
+.paper-cloud > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.paper-cloud-lit {
+  opacity: 0;
+  will-change: opacity;
+}
+
+.sky-flash {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    120% 90% at var(--x, 50%) 8%,
+    rgba(222, 232, 255, 0.95),
+    rgba(160, 182, 232, 0.4) 45%,
+    transparent 78%
+  );
+  will-change: opacity;
+}
+
+.heat-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70vmax;
+  height: 42vmax;
+  opacity: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(var(--glow, 255, 120, 168), 0.75),
+    rgba(var(--glow, 255, 120, 168), 0.22) 55%,
+    transparent
+  );
+  mix-blend-mode: screen;
+  will-change: opacity, transform;
+}
+
+.bolt-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.bolt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  will-change: opacity;
 }
 
 .rain {
-  position: absolute;
+  position: fixed;
+  z-index: 25;
   inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .drop {
   position: absolute;
   top: -12%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.75));
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(214, 226, 246, 0.6);
+  box-shadow: -1px 2px 0 rgba(4, 14, 36, 0.35);
   animation: rainfall linear infinite;
 }
 
 .drop-blue {
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, #8eacd4);
+  width: 3px;
+  background: #8eacd4;
 }
 
 @keyframes rainfall {
@@ -249,8 +303,10 @@
   to { transform: translateY(115vh); }
 }
 
+/* Above the rain (z 25) so drops pass behind the portrait, copy, and hero clouds. */
 .hero-sky {
   position: relative;
+  z-index: 26;
   isolation: isolate;
 }
 
@@ -259,6 +315,7 @@
   z-index: 2;
   background: #fff;
   padding: 0.55rem;
+  rotate: 3deg;
   box-shadow:
     0 2px 0 rgba(255, 255, 255, 0.7),
     0 16px 28px rgba(4, 12, 28, 0.28),
@@ -281,47 +338,40 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  perspective: 900px;
   overflow: hidden;
   pointer-events: none;
 }
 
 .storm-cloud {
   position: absolute;
-  transform-style: preserve-3d;
-  animation: float-3d 16s ease-in-out infinite;
 }
 
 .storm-cloud-1 {
-  top: 4%;
-  right: 2%;
-  width: min(46vw, 420px);
-  height: 160px;
+  top: 2%;
+  right: 1%;
+  width: min(48vw, 460px);
 }
 .storm-cloud-2 {
-  top: 28%;
-  left: -6%;
-  width: min(38vw, 320px);
-  height: 130px;
-  opacity: 0.7;
-  animation-delay: -6s;
+  top: 30%;
+  left: -7%;
+  width: min(38vw, 340px);
+  opacity: 0.85;
 }
 .storm-cloud-3 {
-  right: 8%;
-  bottom: 8%;
-  width: min(30vw, 260px);
-  height: 110px;
-  opacity: 0.45;
-  animation-delay: -11s;
+  right: 10%;
+  bottom: 6%;
+  width: min(30vw, 270px);
+  opacity: 0.7;
 }
-
-@keyframes float-3d {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateY(-14deg) rotateX(8deg); }
-  50% { transform: translate3d(18px, -22px, 60px) rotateY(16deg) rotateX(-6deg); }
+.storm-cloud-4 {
+  top: 6%;
+  left: 30%;
+  width: min(24vw, 220px);
+  opacity: 0.55;
 }
 
 body {
-  padding-bottom: clamp(7.5rem, 17vh, 11.5rem);
+  padding-bottom: clamp(5.625rem, 12.75vh, 8.625rem);
 }
 
 .ocean-canvas {
@@ -332,7 +382,7 @@ body {
   left: 0;
   display: block;
   width: 100%;
-  height: clamp(7.5rem, 17vh, 11.5rem);
+  height: clamp(5.625rem, 12.75vh, 8.625rem);
   pointer-events: none;
 }
 
@@ -418,9 +468,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cloud,
   .drop,
-  .storm-cloud,
   .rise,
   .cloud-field,
   .portrait-frame {

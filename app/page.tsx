@@ -42,7 +42,7 @@ function ExternalAnchor({
 export default function Home() {
   return (
     <>
-      <main className="relative z-[1] flex-1">
+      <main className="relative flex-1">
         <section id="top" className="hero-sky">
           <StormStage />
           <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 pt-8 pb-14 md:grid-cols-[minmax(0,1fr)_17rem] md:pt-12 md:pb-16 lg:grid-cols-[minmax(0,1fr)_19rem]">
