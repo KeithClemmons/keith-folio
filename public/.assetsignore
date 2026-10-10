@@ -1,0 +1,3 @@
+# Files Cloudflare should not serve as static assets. contact.php needs PHP,
+# so it stays on Hostinger and the Worker passes requests for it through.
+contact.php

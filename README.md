@@ -2,7 +2,7 @@
 
 Personal site for Jason “Keith” Clemmons. One static page: web development, AI systems, and automation; lead developer at [GutRx](https://gutrx.com); the three businesses he owns; a short background; client quotes; and a contact form.
 
-There is no database. The form posts to `contact.php`, which sends the note to Keith’s email from the Hostinger server. The address is not printed on the page. Opening the site from disk shows the form, but mail is sent only after the files are on the host.
+There is no database. The form posts to `contact.php`, which sends the note to Keith’s email from the Hostinger server. The address is not printed on the page. Opening the site from disk shows the form, but mail is sent only by the copy on Hostinger.
 
 The paper-cut ocean along the bottom of the screen is drawn on a canvas by `public/ocean.js`, a plain script with no dependencies. It is loaded as a classic script rather than a module so it also runs when the page is opened from disk. With reduced motion turned on, it draws one still frame.
 
@@ -17,24 +17,37 @@ npm run dev
 
 The dev server listens on port **43123** ([http://localhost:43123](http://localhost:43123)).
 
-## Build for Hostinger
+## How it is served
+
+Cloudflare serves this site; the older WordPress site keeps running on Hostinger under the same domain.
+
+- A Cloudflare Worker (`worker/index.js`, configured in `wrangler.jsonc`) sits on `keithclemmons.com/*`. Requests that match a file in the static export (`/`, `_next/`, `ocean.js`, `keith.jpg`, and so on) are answered by Cloudflare from the export.
+- Every other request (`/music`, `/wp-admin`, `/contact.php`, and the rest of WordPress) is passed through unchanged to Hostinger.
+- `contact.php` needs PHP, so `public/.assetsignore` keeps it out of the Cloudflare upload. The copy on Hostinger is the one that runs; upload it there by hand when it changes. The mailbox `keith@keithclemmons.com` needs to exist on that hosting account.
+- The build ships no `robots.txt` or `sitemap.xml`, so WordPress keeps its own. Its sitemap stays at `/wp-sitemap.xml`.
+
+## Deploy
+
+Cloudflare Workers Builds watches this repository. Each push to `main` runs `npm run build`, then `npx wrangler deploy`, and the new version is live about a minute later. No upload and no cache purge are needed for this site.
+
+To deploy by hand instead, sign in once with `npx wrangler login`, then run:
 
 ```bash
-npm install
-npm run build
+npm run deploy
 ```
 
-`next build` writes a static site to `out/`. The files that matter sit at the top of that folder (`index.html`, `404.html`, `_next/`, and the rest). Upload the **contents** of `out/` to the Hostinger web root, usually `public_html`, so `index.html` is directly inside that directory.
+To try the Worker locally, including the pass-through to the live WordPress site:
 
-Asset paths in that folder are relative, so the same files open from a web root or straight from disk (`index.html`). Do not upload the `out` folder itself as a subdirectory, and do not run a Node process on the host. Leave PHP enabled so `contact.php` can send mail. The mailbox `keith@keithclemmons.com` needs to exist on that hosting account.
+```bash
+npm run build
+npm run worker:dev
+```
 
-## Sharing the web root with WordPress
+That serves [http://localhost:8799](http://localhost:8799).
 
-The existing WordPress site stays installed in the same `public_html`. This site answers at `/`, and every other path (`/music`, `/wp-admin`, and the rest) still goes to WordPress, because WordPress only handles requests for files that do not exist.
+## Hostinger fallback
 
-- Upload the contents of `out/` on top of `public_html` without deleting anything. None of the exported names collide with WordPress files.
-- The build ships no `.htaccess`, `robots.txt`, or `sitemap.xml`, so WordPress keeps its own. Its sitemap stays at `/wp-sitemap.xml`.
-- The live `.htaccess` needs these lines at the very top of the file, above the plugin blocks, so `/` serves `index.html` ahead of WordPress’s `index.php`. Keep them outside every `# BEGIN … # END` block, since WordPress, LiteSpeed Cache, Really Simple Security, and Wordfence rewrite their own.
+If the Worker route is ever removed, Hostinger answers every request again. The live `.htaccess` there starts with these lines, outside every plugin's `# BEGIN … # END` block, so `/` serves the uploaded `index.html` ahead of WordPress's `index.php`:
 
 ```apache
 # BEGIN keith-folio
@@ -44,5 +57,4 @@ AddType image/webp .webp
 # END keith-folio
 ```
 
-- After each upload, purge everything in LiteSpeed Cache. Its `CacheLookup on` rule can otherwise keep serving a cached copy of the old WordPress home page at `/`.
-- LiteSpeed Cache tells browsers to keep images, CSS, and JavaScript for a year. The `_next/` files and `ocean.js` carry content hashes, so updates still reach visitors. If `keith.jpg` or `og.png` changes, give the new file a new name.
+To fall back fully, upload the contents of `out/` on top of `public_html` without deleting anything, then purge LiteSpeed Cache and Cloudflare's cache. Asset paths in `out/` are relative, so the same files also open straight from disk.

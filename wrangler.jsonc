@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "keith-folio",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  // The static export. Requests that match a file here are answered by Cloudflare;
+  // everything else runs worker/index.js, which hands it to WordPress on Hostinger.
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "vars": {
+    "ORIGIN": "https://keithclemmons.com"
+  },
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": { "enabled": true }
+  // After the workers.dev preview checks out, attach the real domain by adding:
+  // "routes": [{ "pattern": "keithclemmons.com/*", "zone_name": "keithclemmons.com" }]
+}
