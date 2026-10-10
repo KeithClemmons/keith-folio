@@ -7,6 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);
@@ -65,18 +66,18 @@
   --card-foreground: #ffffff;
   --popover: #202c45;
   --popover-foreground: #ffffff;
-  --primary: #f21b51;
+  --primary: var(--brand);
   --primary-foreground: #ffffff;
   --secondary: #2a3858;
   --secondary-foreground: #ffffff;
   --muted: #2a3858;
   --muted-foreground: #c5cedd;
-  --accent: #f21b51;
+  --accent: var(--brand);
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #3d4e70;
   --input: #3d4e70;
-  --ring: #f21b51;
+  --ring: var(--brand);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -93,6 +94,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Site theme: the stormy night. data-theme="light" swaps in the sunny day below. */
+  --brand: #f21b51;
   --ink: #ffffff;
   --ink-soft: #c5cedd;
   --line: rgba(255, 255, 255, 0.15);
@@ -108,7 +110,7 @@
   --sheet-shadow: rgba(4, 12, 28, 0.5);
   --panel-alt: rgba(255, 255, 255, 0.06);
   --card-tint: rgba(255, 255, 255, 0.04);
-  --card-hover: rgba(242, 27, 81, 0.1);
+  --card-hover: color-mix(in srgb, var(--brand) 10%, transparent);
   --hero-shade: #1a2540;
   --sky-cloud-0: #2b3a5c;
   --sky-cloud-1: #34466d;
@@ -136,11 +138,14 @@
   --border: #c9d3e3;
   --input: #c9d3e3;
 
+  /* Green accent for the day: #1f7d45 keeps white button text at 5.2:1, and the
+     darker #166534 keeps green link text readable on both cream and sky. */
+  --brand: #1f7d45;
   --ink: #1d2a44;
   --ink-soft: #4b5a78;
   --line: rgba(29, 42, 68, 0.16);
   --line-strong: rgba(29, 42, 68, 0.24);
-  --accent-ink: #c4113f;
+  --accent-ink: #166534;
   --page: #fbf7ee;
   --field: #ffffff;
   --field-line: #c9d3e3;
@@ -151,7 +156,7 @@
   --sheet-shadow: rgba(40, 70, 110, 0.22);
   --panel-alt: rgba(255, 255, 255, 0.55);
   --card-tint: rgba(255, 255, 255, 0.5);
-  --card-hover: rgba(242, 27, 81, 0.08);
+  --card-hover: color-mix(in srgb, var(--brand) 8%, transparent);
   --hero-shade: #f3eee3;
   --sky-cloud-0: #c4e1f2;
   --sky-cloud-1: #dcedf8;
@@ -216,7 +221,7 @@
     color-scheme: light;
   }
   ::selection {
-    background: #f21b51;
+    background: var(--brand);
     color: #ffffff;
   }
   section[id] {
@@ -243,12 +248,12 @@
 
 .pull-quote::before {
   content: "\201C";
-  color: #f21b51;
+  color: var(--brand);
   margin-right: 0.12em;
 }
 .pull-quote::after {
   content: "\201D";
-  color: #f21b51;
+  color: var(--brand);
 }
 
 .atmosphere {
@@ -598,8 +603,8 @@ body {
 .slash-ribbon {
   display: inline-flex;
   transform: skewX(-14deg);
-  border-left: 3px solid #f21b51;
-  background: rgba(242, 27, 81, 0.16);
+  border-left: 3px solid var(--brand);
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
   padding: 0.55rem 0.9rem;
 }
 
@@ -641,7 +646,7 @@ body {
   transform-origin: left center;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.25),
-    0 12px 0 rgba(242, 27, 81, 0.35),
+    0 12px 0 color-mix(in srgb, var(--brand) 35%, transparent),
     0 28px 30px rgba(0, 0, 0, 0.35);
 }
 

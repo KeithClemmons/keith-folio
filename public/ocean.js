@@ -13,6 +13,7 @@
   var DAY = [200, 230, 246];
   var haze = NIGHT;
   var shade = "4, 16, 42";
+  var flag = "#f21b51";
 
   var BODY = ["#94d5ee", "#53b5e4", "#2d8ed8", "#2768c6", "#1f4ea3", "#183b80"];
   var LIP = ["#f6f3ec", "#aadff2", "#5cb9e5", "#2f88d4", "#2459b6"];
@@ -51,6 +52,7 @@
     var day = document.documentElement.dataset.theme === "light";
     haze = day ? DAY : NIGHT;
     shade = day ? "30, 74, 116" : "4, 16, 42";
+    flag = getComputedStyle(document.documentElement).getPropertyValue("--brand").trim() || "#f21b51";
     var depth = day ? 0.7 : 1;
     palettes = LAYERS.map(function (layer) {
       return {
@@ -322,7 +324,7 @@
     path.quadraticCurveTo(8, -58.5 + wave, 13, -58 + wave * 1.4);
     path.quadraticCurveTo(8, -60 + wave, 2.2, -61.5);
     path.closePath();
-    paperFill("#f21b51", 2);
+    paperFill(flag, 2);
 
     band(-9, 9);
     paperFill(WOOD[0], 4);

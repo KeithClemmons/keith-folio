@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 const fieldClass =
-  "mt-2 w-full rounded-lg border border-field-line bg-field px-3 py-2.5 text-base text-ink outline-none placeholder:text-ink-soft/70 focus-visible:border-[#f21b51] focus-visible:ring-3 focus-visible:ring-[#f21b51]/40";
+  "mt-2 w-full rounded-lg border border-field-line bg-field px-3 py-2.5 text-base text-ink outline-none placeholder:text-ink-soft/70 focus-visible:border-brand focus-visible:ring-3 focus-visible:ring-brand/40";
 
 export function ContactForm() {
   return (

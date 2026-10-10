@@ -20,7 +20,7 @@ function NavLinks({ className }: { className?: string }) {
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-[var(--header-bg)] backdrop-blur-md">
-      <div className="h-[3px] bg-[#f21b51]" />
+      <div className="h-[3px] bg-brand" />
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:py-3.5">
         <a href="index.html#work" className="justify-self-start">
           <img
@@ -32,13 +32,7 @@ export function Header() {
           />
         </a>
         <NavLinks className="hidden items-center gap-5 lg:flex" />
-        <div className="flex items-center gap-4 justify-self-end">
-          <a
-            href="index.html#contact"
-            className="font-mono text-sm tracking-wide text-ink underline decoration-[#f21b51] underline-offset-4 hover:text-accent-ink"
-          >
-            Contact
-          </a>
+        <div className="justify-self-end">
           <ThemeToggle />
         </div>
       </div>

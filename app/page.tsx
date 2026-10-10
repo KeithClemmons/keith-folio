@@ -31,7 +31,7 @@ function ExternalAnchor({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-medium text-accent-ink underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-ink"
+      className="font-medium text-accent-ink underline decoration-brand underline-offset-[0.2em] hover:text-ink"
     >
       {children}
       <span className="sr-only"> (opens in a new tab)</span>
@@ -69,7 +69,7 @@ export default function Home() {
                 <br />
                 and <span className="italic">automation.</span>
               </h1>
-              <div className="mt-6 h-px w-14 bg-[#f21b51]" />
+              <div className="mt-6 h-px w-14 bg-brand" />
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink md:text-xl md:leading-relaxed">
                 I build websites and the systems around them:
                 <br />
@@ -79,7 +79,7 @@ export default function Home() {
                 {systems.map((item, index) => (
                   <li key={item} className="flex items-center gap-2">
                     {index > 0 ? (
-                      <span aria-hidden="true" className="text-[#f21b51]">
+                      <span aria-hidden="true" className="text-brand">
                         /
                       </span>
                     ) : null}
@@ -177,7 +177,7 @@ export default function Home() {
                       studio phone line is{" "}
                       <a
                         href={links.greenOwlPhoneHref}
-                        className="font-medium text-accent-ink underline decoration-[#f21b51] underline-offset-[0.2em] hover:text-ink"
+                        className="font-medium text-accent-ink underline decoration-brand underline-offset-[0.2em] hover:text-ink"
                       >
                         {links.greenOwlPhoneDisplay}
                       </a>
@@ -370,7 +370,7 @@ export default function Home() {
             {nav.map((item) => (
               <li key={item.href}>
                 <a
-                  className="underline decoration-[#f21b51] underline-offset-4 hover:text-ink"
+                  className="underline decoration-brand underline-offset-4 hover:text-ink"
                   href={item.href}
                 >
                   {item.label}
