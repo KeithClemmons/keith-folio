@@ -42,7 +42,7 @@ export function socialImage() {
           <div>and automation.</div>
         </div>
         <div style={{ display: "flex", fontSize: 28, lineHeight: 1.35 }}>
-          Code, SEO, email, content, and AI agents that do real work.
+          Code, SEO, Email, Content, and AI Agents that do real work.
         </div>
       </div>
     ),

@@ -67,8 +67,8 @@ export default function Home() {
             </h1>
             <div className="mt-6 h-px w-14 bg-[#f21b51]" />
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white md:text-xl md:leading-relaxed">
-              I build websites and the systems around them: code, SEO, email,
-              content, and AI agents that do real work.
+              I build websites and the systems around them: Code, SEO, Email,
+              Content, and AI Agents that do real work.
             </p>
             <ul className="slash-ribbon mt-6 list-none flex-wrap items-center gap-x-2 gap-y-1 p-0 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#c5cedd]">
               {systems.map((item, index) => (

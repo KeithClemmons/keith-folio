@@ -101,4 +101,4 @@ export const testimonials = [
 ] as const;
 
 export const description =
-  "Jason “Keith” Clemmons builds websites and the systems around them: code, SEO, email, content, and AI agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";
+  "Jason “Keith” Clemmons builds websites and the systems around them: Code, SEO, Email, Content, and AI Agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";
