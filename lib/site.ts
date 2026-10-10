@@ -77,7 +77,7 @@ export const tools = [
   "Hermes Agent",
 ] as const;
 
-export const systems = ["Sites", "SEO", "IT", "Content", "AI agents"] as const;
+export const systems = ["Sites", "SEO", "IT", "Content", "AI systems"] as const;
 
 export const testimonials = [
   {
@@ -101,4 +101,4 @@ export const testimonials = [
 ] as const;
 
 export const description =
-  "Jason “Keith” Clemmons builds websites and the systems around them: Code, SEO, Email, Content, and AI Agents that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";
+  "Jason “Keith” Clemmons builds websites and the systems around them: IT, Code, Content, SEO, and AI Systems that do real work. Lead developer at GutRx. Based in Atlanta, Georgia.";

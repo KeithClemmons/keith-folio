@@ -38,7 +38,7 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
 });
 
-const title = "Keith Clemmons — Web development, AI systems, and automation";
+const title = "Keith Clemmons — Web development, AI systems, Marketing, and automation";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://keithclemmons.com"),

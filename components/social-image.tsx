@@ -39,10 +39,11 @@ export function socialImage() {
         >
           <div>Web development,</div>
           <div>AI systems,</div>
+          <div>Marketing,</div>
           <div>and automation.</div>
         </div>
         <div style={{ display: "flex", fontSize: 28, lineHeight: 1.35 }}>
-          Code, SEO, Email, Content, and AI Agents that do real work.
+          IT, Code, Content, SEO, and AI Systems that do real work.
         </div>
       </div>
     ),
